@@ -26,7 +26,7 @@ const CursorLineTrail = () => {
 
     const handleMouseMove = (e: MouseEvent) => {
       lastMoveTimeRef.current = Date.now();
-      // Round coordinates for pixelated effect
+
       const x = Math.round(e.clientX / 8) * 8;
       const y = Math.round(e.clientY / 8) * 8;
       const point = `${x},${y}`;
