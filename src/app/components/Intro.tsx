@@ -69,7 +69,7 @@ const Intro = ({
 
   const introLines = [
     <>
-      A <span className="font-semibold">Visual Designer / Art Director</span>{" "}
+      A <span className="font-semibold">Visual Communication Designer</span>{" "}
       currently
     </>,
     <>at Please See, building brands and campaigns.</>,

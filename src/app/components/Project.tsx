@@ -208,7 +208,7 @@ const Project = () => {
                 <Image
                   src={diageo}
                   alt="Tarang Project"
-                  className="w-full object-cover transition-transform duration-300 hover:scale-[1.05] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[650px]"
+                  className="w-full object-contain transition-transform duration-300 hover:scale-[1.05] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[650px]"
                 />
               </div>
             </div>
