@@ -53,8 +53,8 @@ const AccordionExampleSection = () => {
                 Is it styled?
               </AccordionTrigger>
               <AccordionContent>
-                Yes. It comes with default styles that match the other
-                components' aesthetic.
+                {` Yes. It comes with default styles that match the other
+                components' aesthetic.`}
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
@@ -62,8 +62,8 @@ const AccordionExampleSection = () => {
                 Is it animated?
               </AccordionTrigger>
               <AccordionContent>
-                Yes. It's animated by default, but you can disable it if you
-                prefer.
+                {` Yes. It's animated by default, but you can disable it if you
+                prefer.`}
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -199,8 +199,8 @@ const AccordionExampleSection = () => {
             <AccordionItem value="item-2">
               <AccordionTrigger>Is it styled?</AccordionTrigger>
               <AccordionContent>
-                Yes. It comes with default styles that match the other
-                components' aesthetic.
+                {` Yes. It comes with default styles that match the other
+                components' aesthetic.`}
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
@@ -208,8 +208,8 @@ const AccordionExampleSection = () => {
                 Is it animated?
               </AccordionTrigger>
               <AccordionContent>
-                Yes. It's animated by default, but you can disable it if you
-                prefer.
+                {`Yes. It's animated by default, but you can disable it if you
+                prefer.`}
               </AccordionContent>
             </AccordionItem>
           </Accordion>

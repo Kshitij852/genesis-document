@@ -38,7 +38,7 @@ const InputExampleSection = () => {
             <Label htmlFor="email-basic">Email address</Label>
             <Input size="sm" type="email" placeholder="Enter your email" />
             <HelperText className="text-sm text-gray-500">
-              We'll never share your email.
+              {` We'll never share your email.`}
             </HelperText>
           </div>
 

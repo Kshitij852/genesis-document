@@ -30,12 +30,13 @@ const PropsSection = () => {
             </TableDataCell>
             <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
               <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                "filled" | "outlined"
+                {` "filled" | "outlined"`}
               </code>
             </TableDataCell>
             <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
               <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                "filled"
+                {`                "filled"
+`}{" "}
               </code>
             </TableDataCell>
             <TableDataCell className="text-gray-700">
@@ -50,12 +51,12 @@ const PropsSection = () => {
             </TableDataCell>
             <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
               <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                "sm" | "md" | "lg"
+                {`"sm" | "md" | "lg"`}
               </code>
             </TableDataCell>
             <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
               <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                "md"
+                {`"sm"`}
               </code>
             </TableDataCell>
             <TableDataCell className="text-gray-700">
@@ -196,12 +197,12 @@ const PropsSection = () => {
             </TableDataCell>
             <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
               <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                "submit" | "reset" | "button"
+                {`"submit" | "reset" | "button"`}
               </code>
             </TableDataCell>
             <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
               <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                "button"
+                {` "button"`}
               </code>
             </TableDataCell>
             <TableDataCell className="text-gray-700">

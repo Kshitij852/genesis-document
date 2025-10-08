@@ -81,12 +81,12 @@ const MainInput = () => {
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                    "sm" | "lg"
+                    {`"sm" | "lg"`}
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
                   <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    "sm"
+                    {`"sm"`}
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
@@ -244,13 +244,14 @@ const MainInput = () => {
                     </p>
                     <div className="bg-gray-50 rounded border border-gray-200 px-3 py-2">
                       <code className="text-xs text-gray-700 font-mono block">
-                        &lt;div className="flex flex-col gap-2"&gt;
+                        &lt;div className=&quot;flex flex-col gap-2&quot;&gt;
                         <br />
                         &nbsp;&nbsp;&lt;Label required
-                        htmlFor="email"&gt;Email&lt;/Label&gt;
+                        htmlFor=&quot;email&quot;&gt;Email&lt;/Label&gt;
                         <br />
-                        &nbsp;&nbsp;&lt;Input id="email" type="text"
-                        placeholder="Enter email" /&gt;
+                        &nbsp;&nbsp;&lt;Input id=&quot;email&quot;
+                        type=&quot;text&quot; placeholder=&quot;Enter
+                        email&quot; /&gt;
                         <br />
                         &nbsp;&nbsp;&lt;HelperText&gt;This is a helper
                         text&lt;/HelperText&gt;

@@ -381,12 +381,12 @@ const MainCheckbox = () => {
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                    "sm" | "lg" | "xl"
+                    {`"sm" | "lg" | "xl"`}
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
                   <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    "lg"
+                    {`"lg"`}
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
@@ -467,7 +467,7 @@ const MainCheckbox = () => {
                     </p>
                     <div className="bg-gray-50 rounded border border-gray-200 px-3 py-2">
                       <code className="text-xs text-gray-700 font-mono block">
-                        &lt;div className="flex items-start gap-3"&gt;
+                        &lt;div className=&quot;flex items-start gap-3&quot;&gt;
                         <br />
                         &nbsp;&nbsp;&lt;Checkbox /&gt;
                         <br />
@@ -476,7 +476,7 @@ const MainCheckbox = () => {
                         &nbsp;&nbsp;&nbsp;&nbsp;&lt;Label&gt;Option&lt;/Label&gt;
                         <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&lt;HelperText
-                        className="text-sm text-gray-500"&gt;Helper
+                        className=&quot;text-sm text-gray-500&quot;&gt;Helper
                         text&lt;/HelperText&gt;
                         <br />
                         &nbsp;&nbsp;&lt;/div&gt;

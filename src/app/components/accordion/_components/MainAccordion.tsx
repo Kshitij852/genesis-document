@@ -89,7 +89,7 @@ const MainAccordion = () => {
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-purple-50 text-purple-700 px-2 py-1 text-nowrap rounded-md text-xs font-mono">
-                    "single" | "multiple"
+                    {`"single" | "multiple"`}
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
@@ -124,8 +124,8 @@ const MainAccordion = () => {
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  When type is "single", allows closing all items when
-                  collapsible is true
+                  {`  When type is "single", allows closing all items when
+                  collapsible is true`}
                 </TableDataCell>
               </TableRow>
 
@@ -208,7 +208,8 @@ const MainAccordion = () => {
                   trigger using your own Tailwind or CSS classes. <br />
                   Example:{" "}
                   <code className="bg-gray-100 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    className="text-blue-600 hover:text-blue-800"
+                    {`                    className="text-blue-600 hover:text-blue-800"
+`}{" "}
                   </code>
                 </TableDataCell>
               </TableRow>

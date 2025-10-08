@@ -88,14 +88,14 @@ const MainChip = () => {
                     content={`primary | success | error | warning | default | indigo | orange | pink | purple | violet | bluegray | bluelight | rose`}
                   >
                     <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono whitespace-nowrap">
-                      "primary" | "success" | "error" | …
+                      {`"primary" | "success" | "error" | …`}
                     </code>
                   </Tooltip>
                 </TableDataCell>
 
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
                   <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    "primary"
+                    {`"primary"`}
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
@@ -110,12 +110,12 @@ const MainChip = () => {
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                    "sm" | "md" | "lg"
+                    {`"sm" | "md" | "lg"`}
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
                   <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    "md"
+                    {`"md"`}
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">

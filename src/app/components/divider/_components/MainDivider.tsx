@@ -345,12 +345,12 @@ const DividerPropsTable = () => {
             </TableDataCell>
             <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
               <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                "horizontal" | "vertical"
+                {`"horizontal" | "vertical"`}
               </code>
             </TableDataCell>
             <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
               <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                "horizontal"
+                {`"horizontal"`}
               </code>
             </TableDataCell>
             <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
@@ -375,7 +375,7 @@ const DividerPropsTable = () => {
               </code>
             </TableDataCell>
             <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-              Height of the vertical divider (e.g., "200px", "50%", "2rem")
+              {`Height of the vertical divider (e.g., "200px", "50%", "2rem")`}
             </TableDataCell>
           </TableRow>
 

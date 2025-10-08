@@ -357,12 +357,12 @@ const MainToggle = () => {
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                    "sm" | "md" | "lg"
+                    {`"sm" | "md" | "lg"`}
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
                   <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    "md"
+                    {`"md"`}
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
@@ -378,12 +378,12 @@ const MainToggle = () => {
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                    "primary" | "success"
+                    {`"primary" | "success"`}
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
                   <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    "primary"
+                    {` "primary"`}
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
@@ -421,10 +421,10 @@ const MainToggle = () => {
                     </p>
                     <div className="bg-gray-50 rounded border border-gray-200 px-3 py-2">
                       <code className="text-xs text-gray-700 font-mono block">
-                        &lt;Label htmlFor="toggle"&gt;Enable
+                        &lt;Label htmlFor=&quot;toggle&quot;&gt;Enable
                         feature&lt;/Label&gt;
                         <br />
-                        &lt;Toggle id="toggle"/&gt;
+                        &lt;Toggle id=&quot;toggle&quot; /&gt;
                       </code>
                     </div>
                   </div>

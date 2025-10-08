@@ -176,12 +176,12 @@ const HelpertextSection = () => {
               </TableDataCell>
               <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                 <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs text-nowrap font-mono">
-                  "sm" | "lg"
+                  {`"sm" | "lg"`}
                 </code>
               </TableDataCell>
               <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                 <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                  "sm"
+                  {`"sm"`}
                 </code>
               </TableDataCell>
               <TableDataCell className="text-gray-700">
