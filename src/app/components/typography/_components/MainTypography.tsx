@@ -31,15 +31,6 @@ const MainTypography = () => {
     setValue(newValue);
   };
 
-  const [nestedTabs, setNestedTabs] = useState({
-    label: "react",
-    helper: "react",
-  });
-
-  const handleNestedTabChanges = (section: string, value: string) => {
-    setNestedTabs((prev) => ({ ...prev, [section]: value }));
-  };
-
   return (
     <div className="space-y-8 p-6">
       {/* Header */}

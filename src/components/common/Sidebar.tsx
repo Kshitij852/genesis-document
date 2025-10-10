@@ -1,23 +1,36 @@
 "use client";
 import React from "react";
 import {
+  RiAlertLine,
   RiArrowDownSLine,
   RiCheckboxLine,
   RiCircleFill,
   RiDashboardLine,
+  RiDivideLine,
   RiEqualizerLine,
   RiFileUploadLine,
+  RiFilterLine,
   RiFontSize2,
+  RiGhostLine,
+  RiGlobalLine,
   RiInformationLine,
   RiInputCursorMove,
   RiInputMethodLine,
+  RiLayoutHorizontalLine,
+  RiListOrdered,
+  RiLoaderLine,
   RiLogoutBoxRLine,
+  RiMenu5Line,
   RiMouseLine,
   RiPriceTagLine,
   RiProgress3Line,
   RiRadioButtonLine,
-  RiSeparator,
+  RiRouteLine,
+  RiSideBarLine,
+  RiTableLine,
   RiToggleLine,
+  RiUser3Line,
+  RiWindowLine,
 } from "@remixicon/react";
 import { Button, Divider, Sidebar } from "@atomos_tech/genesis";
 
@@ -102,12 +115,77 @@ const MainSidebar = ({ collapsed, setCollapsed }: MainSidebarProps) => {
         {
           label: "Divider",
           href: "/components/divider",
-          icon: <RiSeparator size={18} />,
+          icon: <RiDivideLine size={18} />,
         },
         {
           label: "Textarea",
           href: "/components/textarea",
           icon: <RiInputCursorMove size={18} />,
+        },
+        {
+          label: "Loading",
+          href: "/components/loading",
+          icon: <RiLoaderLine size={18} />,
+        },
+        {
+          label: "Tabs",
+          href: "/components/tabs",
+          icon: <RiLayoutHorizontalLine size={18} />,
+        },
+        {
+          label: "Menu Item",
+          href: "/components/menu-item",
+          icon: <RiMenu5Line size={18} />,
+        },
+        {
+          label: "Stepper",
+          href: "/components/stepper",
+          icon: <RiListOrdered size={18} />,
+        },
+        {
+          label: "Modal",
+          href: "/components/modal",
+          icon: <RiWindowLine size={18} />,
+        },
+        {
+          label: "Breadcrumb",
+          href: "/components/breadcrumb",
+          icon: <RiRouteLine size={18} />,
+        },
+        {
+          label: "Sidebar",
+          href: "/components/sidebar",
+          icon: <RiSideBarLine size={18} />,
+        },
+        {
+          label: "Skeleton",
+          href: "/components/skeleton",
+          icon: <RiGhostLine size={18} />,
+        },
+        {
+          label: "Dropdown",
+          href: "/components/dropdown",
+          icon: <RiFilterLine size={18} />,
+        },
+        {
+          label: "Notice",
+          href: "/components/notice",
+          icon: <RiAlertLine size={18} />,
+        },
+        {
+          label: "Avatar",
+          href: "/components/avatar",
+          icon: <RiUser3Line size={18} />,
+        },
+        {
+          label: "Global Navigation",
+          href: "/components/global-navigation",
+          icon: <RiGlobalLine size={18} />,
+        },
+        {
+          label: "Table",
+          href: "/components/table",
+          icon: <RiTableLine size={18} />,
         },
       ],
     },
@@ -117,6 +195,11 @@ const MainSidebar = ({ collapsed, setCollapsed }: MainSidebarProps) => {
         {
           label: "Dashboard",
           href: "/pages/dashboard",
+          icon: <RiCircleFill size={18} />,
+        },
+        {
+          label: "Team",
+          href: "/pages/team",
           icon: <RiCircleFill size={18} />,
         },
         {

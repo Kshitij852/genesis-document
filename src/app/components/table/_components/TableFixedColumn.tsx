@@ -1,0 +1,161 @@
+"use client";
+
+import { tableData } from "@/utils/table";
+import {
+  Chip,
+  Pagination,
+  Table,
+  TableBody,
+  TableDataCell,
+  TableHead,
+  TableHeadCell,
+  TableRow,
+  Tooltip,
+} from "@atomos_tech/genesis";
+import { RiInformation2Line } from "@remixicon/react";
+import React, { useState } from "react";
+
+const TableFixedColumn = () => {
+  const [data, setData] = useState(tableData);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const handleChangePage = (newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (newRowsPerPage: number) => {
+    setRowsPerPage(newRowsPerPage);
+    setPage(0);
+  };
+
+  const startIndex = page * rowsPerPage;
+  const endIndex = (page + 1) * rowsPerPage;
+  const currentPageData = data?.slice(startIndex, endIndex);
+
+  return (
+    <div className="w-full">
+      {/* Pagination (top) */}
+      <Pagination
+        count={tableData?.length}
+        page={page}
+        rowsPerPage={rowsPerPage}
+        rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+        variant="secondary"
+        countVariable="Logs"
+        itemsPerPage={false}
+      />
+
+      {/* Scrollable table wrapper */}
+      <div className="w-full overflow-x-auto border rounded-lg">
+        <div className="inline-block min-w-full align-middle">
+          <Table className="min-w-[1200px]">
+            <TableHead>
+              <TableRow>
+                <TableHeadCell sticky left="0px" shadow className="bg-white">
+                  ID
+                </TableHeadCell>
+                <TableHeadCell>First Name</TableHeadCell>
+                <TableHeadCell
+                  icon={
+                    <Tooltip
+                      position="right"
+                      content={
+                        <div>
+                          <h1 className="font-semibold text-xs">
+                            This is a tooltip
+                          </h1>
+                          <p className="font-normal text-xs">
+                            Tooltips are used to describe or identify an
+                            element. In most scenarios, tooltips help the user
+                            understand the meaning, function, or alt-text of an
+                            element.
+                          </p>
+                        </div>
+                      }
+                    >
+                      <RiInformation2Line size={15} />
+                    </Tooltip>
+                  }
+                >
+                  Last Name
+                </TableHeadCell>
+                <TableHeadCell>Age</TableHeadCell>
+                <TableHeadCell>Progress</TableHeadCell>
+                <TableHeadCell>Status</TableHeadCell>
+                <TableHeadCell>Visits</TableHeadCell>
+                <TableHeadCell>Progress Extra</TableHeadCell>
+                <TableHeadCell>Status Extra</TableHeadCell>
+                <TableHeadCell>Visits Extra</TableHeadCell>
+                <TableHeadCell>Progress Extra</TableHeadCell>
+                <TableHeadCell>Status Extra</TableHeadCell>
+                <TableHeadCell>Visits Extra</TableHeadCell>
+                {/* <TableHeadCell>Progress Extra</TableHeadCell> */}
+                {/* <TableHeadCell>Status Extra</TableHeadCell>
+                <TableHeadCell>Visits Extra</TableHeadCell> */}
+              </TableRow>
+            </TableHead>
+
+            <TableBody>
+              {currentPageData?.map((item) => (
+                <TableRow key={item.id}>
+                  <TableDataCell
+                    sticky
+                    left="0px"
+                    shadow
+                    className="bg-white z-[40]"
+                  >
+                    {item.id}
+                  </TableDataCell>
+                  <TableDataCell>{item.firstName}</TableDataCell>
+                  <TableDataCell>{item.lastName}</TableDataCell>
+                  <TableDataCell>{item.age}</TableDataCell>
+                  <TableDataCell>{item.progress}</TableDataCell>
+                  <TableDataCell>
+                    <Chip dot intent="primary" size="sm">
+                      {item.status}
+                    </Chip>
+                  </TableDataCell>
+                  <TableDataCell>{item.visits}</TableDataCell>
+                  <TableDataCell>{item.progress}</TableDataCell>
+                  <TableDataCell>
+                    <Chip intent="primary" size="sm">
+                      {item.status}
+                    </Chip>
+                  </TableDataCell>
+                  <TableDataCell>{item.visits}</TableDataCell>
+                  <TableDataCell>{item.progress}</TableDataCell>
+                  <TableDataCell>
+                    <Chip intent="primary" size="sm">
+                      {item.status}
+                    </Chip>
+                  </TableDataCell>
+                  <TableDataCell>{item.visits}</TableDataCell>
+                  {/* <TableDataCell>{item.progress}</TableDataCell> */}
+                  {/* <TableDataCell>
+                    <Chip intent="primary" size="sm">
+                      {item.status}
+                    </Chip>
+                  </TableDataCell>
+                  <TableDataCell>{item.visits}</TableDataCell> */}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      </div>
+
+      {/* Optional bottom pagination (can uncomment if desired) */}
+      {/* <ListPagination
+        count={tableData?.length}
+        page={page}
+        onPageChange={handleChangePage}
+        rowsPerPage={rowsPerPage}
+      /> */}
+    </div>
+  );
+};
+
+export default TableFixedColumn;
