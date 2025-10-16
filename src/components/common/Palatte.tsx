@@ -6,7 +6,7 @@ import { useTheme } from "@/context/ThemeContext";
 const ThemePalette = () => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const { setIntent } = useTheme();
+  const { setIntent, intent } = useTheme();
 
   const colors = [
     { name: "Primary", intent: "theme-primary", hex: "#1570ef" }, // primary-600
@@ -58,14 +58,29 @@ const ThemePalette = () => {
           <p className="text-sm text-gray-500 mb-2">Choose Theme</p>
           <div className="grid grid-cols-4 gap-3">
             {colors.map((c) => (
-              <div key={c.name} className="flex flex-col items-center">
+              <div
+                key={c.name}
+                className={`flex flex-col items-center p-2 rounded-lg transition-all whitespace-nowrap duration-200 ${
+                  intent === c.intent ? "bg-gray-100" : "hover:bg-gray-50"
+                }`}
+              >
                 <button
                   onClick={() => handleColorChange(c.intent)}
-                  className="w-6 h-6 rounded-full border-2 border-gray-200 hover:scale-110 transition-transform duration-200"
+                  className={`w-6 h-6 rounded-full border-2 transition-all duration-200 hover:scale-110 ${
+                    intent === c.intent ? "" : "border-gray-200"
+                  }`}
                   title={c.name}
                   style={{ backgroundColor: c.hex }}
                 />
-                <span className="text-xs text-gray-600 mt-1">{c.name}</span>
+                <span
+                  className={`text-xs mt-1 ${
+                    intent === c.intent
+                      ? "text-gray-800 font-medium"
+                      : "text-gray-600"
+                  }`}
+                >
+                  {c.name}
+                </span>
               </div>
             ))}
           </div>
