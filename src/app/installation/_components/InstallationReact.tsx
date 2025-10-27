@@ -28,8 +28,8 @@ const InstallationReact = () => {
             Step 2: Import CSS
           </h3>
           <p className="text-gray-600 mt-2 text-sm mb-2">
-            Import the library's CSS in your root layout file to apply the
-            default styles.
+            {` Import the library's CSS in your root layout file to apply the
+            default styles.`}
           </p>
           <div className="bg-gray-100 p-4 rounded-lg font-mono text-sm">
             {`import "@atomos_tech/genesis-react/style";`}
@@ -51,7 +51,7 @@ const InstallationReact = () => {
 
           <div className="bg-gray-100 p-4 rounded-lg font-mono text-sm">
             {`import "@atomos_tech/genesis-react/style";`} <br />
-            <div className="text-gray-500">// or node_modules import</div>
+            <div className="text-gray-500">{"// or node_modules import"}</div>
             {`import "../node_modules/@atomos_tech/genesis-react/dist/index.css";`}{" "}
             <br />
             {`import "./globals.css";`}
@@ -616,8 +616,8 @@ export default function InteractivePage() {
           <code className="bg-gray-200 px-1 py-0.5 rounded">
             @atomos_tech/genesis-react
           </code>{" "}
-          library in your web applications, providing a consistent and visually
-          appealing user interface.
+          {`library in your web applications, providing a consistent and visually
+          appealing user interface.`}
         </p>
       </div>
     </div>

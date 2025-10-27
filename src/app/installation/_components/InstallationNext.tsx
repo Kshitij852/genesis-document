@@ -28,8 +28,8 @@ const InstallationNext = () => {
             Step 2: Import CSS
           </h3>
           <p className="text-gray-600 mt-2 text-sm mb-2">
-            Import the library's CSS in your root layout file to apply the
-            default styles.
+            {` Import the library's CSS in your root layout file to apply the
+            default styles.`}
           </p>
           <div className="bg-gray-100 p-4 rounded-lg font-mono text-sm">
             {`import "@atomos_tech/genesis/style";`}
@@ -39,7 +39,9 @@ const InstallationNext = () => {
             Make sure to import it right above your global.css file to override
             the default colour palette!
           </h4>
-          <p className="text-sm mt-3 mb-2">For example:</p>
+          <p className="text-sm mt-3 mb-2">
+            For example:&nbsp;&apos;next build&apos;
+          </p>
           <div className="bg-gray-100 p-4 rounded-lg font-mono text-sm">
             {`import "@atomos_tech/genesis/style";`} <br />
             {`import "./globals.css";`}

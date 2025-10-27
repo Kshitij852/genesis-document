@@ -382,10 +382,10 @@ const MainOverview = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredComponents.map((component) => (
               <Link key={component.name} href={component.href}>
-                <div className="h-full p-6 hover:shadow-lg transition-all duration-200 cursor-pointer border border-gray-200 hover:border-primary-300 group">
+                <div className="h-full p-6 hover:shadow-lg transition-all bg-white duration-200 cursor-pointer border border-gray-200 hover:border-primary-300 group">
                   <div className="flex flex-col h-full">
                     <div className="flex items-start justify-between mb-4">
-                      <div className="p-2 rounded-lg bg-gray-100 group-hover:bg-primary-50 transition-colors">
+                      <div className="p-2 rounded-lg bg-gray-50 group-hover:bg-primary-50 transition-colors">
                         {component.icon}
                       </div>
                       <Chip size="sm" intent="primary" className="text-xs">
