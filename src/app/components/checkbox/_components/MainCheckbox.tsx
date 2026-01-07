@@ -2,12 +2,6 @@
 import React, { useState } from "react";
 import {
   Checkbox,
-  Table,
-  TableBody,
-  TableDataCell,
-  TableHead,
-  TableHeadCell,
-  TableRow,
   TabsContainer,
   TabList,
   Tab,
@@ -23,6 +17,7 @@ import {
 import CodeSnippet from "../../button/_components/CodeSnippet";
 import FeatureCard from "../../../../components/common/FeatureCard";
 import { RiLightbulbFlashLine } from "@remixicon/react";
+import CheckboxTableProp from "./CheckboxTableProp";
 
 const CheckboxExampleSection = () => {
   const [nestedTabs, setNestedTabs] = useState({
@@ -34,6 +29,7 @@ const CheckboxExampleSection = () => {
 
   const [checkboxStates, setCheckboxStates] = useState({
     large: false,
+    xl: false,
     disabled: false,
     checked: true,
     small: false,
@@ -46,6 +42,7 @@ const CheckboxExampleSection = () => {
     | "disabled"
     | "checked"
     | "small"
+    | "xl"
     | "textSmall"
     | "textLarge";
 
@@ -73,8 +70,8 @@ const CheckboxExampleSection = () => {
           <div className="flex items-center gap-3">
             <Checkbox
               size="sm"
-              checked={checkboxStates.large}
-              onChange={() => handleCheckboxChange("large")}
+              checked={checkboxStates.small}
+              onChange={() => handleCheckboxChange("small")}
             />
             <Label className="font-semibold text-gray-700">Small</Label>
           </div>
@@ -86,6 +83,15 @@ const CheckboxExampleSection = () => {
               onChange={() => handleCheckboxChange("large")}
             />
             <Label className="font-semibold text-gray-700">Large</Label>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Checkbox
+              size="xl"
+              checked={checkboxStates.xl}
+              onChange={() => handleCheckboxChange("xl")}
+            />
+            <Label className="font-semibold text-gray-700">XL</Label>
           </div>
         </div>
 
@@ -122,6 +128,11 @@ const CheckboxExampleSection = () => {
 <div className="flex items-center gap-3">
   <Checkbox size="lg" />
   <Label className="font-semibold">Large</Label>
+</div>
+
+<div className="flex items-center gap-3">
+  <Checkbox size="xl"/>
+  <Label className="font-semibold text-gray-700">XL</Label>
 </div>`}
             />
           </TabPanel>
@@ -137,6 +148,11 @@ const CheckboxExampleSection = () => {
 <div className="flex items-center gap-3">
   <Checkbox size="lg" />
   <Label className="font-semibold">Large</Label>
+</div>
+
+<div className="flex items-center gap-3">
+  <Checkbox size="xl"/>
+  <Label className="font-semibold text-gray-700">XL</Label>
 </div>`}
             />
           </TabPanel>
@@ -216,6 +232,7 @@ const CheckboxExampleSection = () => {
             <Checkbox
               size="sm"
               checked={checkboxStates.textSmall}
+              className="mt-1"
               onChange={() => handleCheckboxChange("textSmall")}
             />
             <div>
@@ -230,6 +247,7 @@ const CheckboxExampleSection = () => {
             <Checkbox
               size="lg"
               checked={checkboxStates.textLarge}
+              className="mt-1"
               onChange={() => handleCheckboxChange("textLarge")}
             />
             <div>
@@ -359,138 +377,7 @@ const MainCheckbox = () => {
       <CheckboxExampleSection />
 
       {/* Props Section */}
-      <section className="space-y-6">
-        <h2 className="text-2xl font-semibold text-gray-800">Props</h2>
-
-        <div className="overflow-auto shadow-sm rounded-xl">
-          <Table>
-            <TableHead>
-              <TableRow className="text-left">
-                <TableHeadCell>Prop</TableHeadCell>
-                <TableHeadCell>Type</TableHeadCell>
-                <TableHeadCell>Default</TableHeadCell>
-                <TableHeadCell>Description</TableHeadCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    size
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
-                  <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                    {`"sm" | "lg" | "xl"`}
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
-                  <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    {`"lg"`}
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Controls the size of the checkbox
-                </TableDataCell>
-              </TableRow>
-
-              <TableRow>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    checked
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
-                  <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                    boolean
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
-                  <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    false
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Whether the checkbox is checked
-                </TableDataCell>
-              </TableRow>
-
-              <TableRow>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    disabled
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
-                  <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                    boolean
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
-                  <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    false
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  When true, the checkbox becomes non-interactive
-                </TableDataCell>
-              </TableRow>
-
-              <TableRow>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    withLabel
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
-                  <div className="flex items-center gap-1">
-                    <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono border-r border-purple-200">
-                      Checkbox
-                    </code>
-                    <span className="text-gray-400 mx-1">+</span>
-                    <code className="bg-green-50 text-green-700 px-2 py-1 rounded-md text-xs font-mono border-l border-green-200">
-                      Label
-                    </code>
-                  </div>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-400 text-sm">
-                  -
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  <div className="space-y-2">
-                    <p>
-                      Combine with the{" "}
-                      <code className="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded text-xs font-mono">
-                        Label
-                      </code>{" "}
-                      component for accessible form labels and helper text.
-                    </p>
-                    <div className="bg-gray-50 rounded border border-gray-200 px-3 py-2">
-                      <code className="text-xs text-gray-700 font-mono block">
-                        &lt;div className=&quot;flex items-start gap-3&quot;&gt;
-                        <br />
-                        &nbsp;&nbsp;&lt;Checkbox /&gt;
-                        <br />
-                        &nbsp;&nbsp;&lt;div&gt;
-                        <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;Label&gt;Option&lt;/Label&gt;
-                        <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;HelperText
-                        className=&quot;text-sm text-gray-500&quot;&gt;Helper
-                        text&lt;/HelperText&gt;
-                        <br />
-                        &nbsp;&nbsp;&lt;/div&gt;
-                        <br />
-                        &lt;/div&gt;
-                      </code>
-                    </div>
-                  </div>
-                </TableDataCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </div>
-      </section>
+      <CheckboxTableProp />
     </div>
   );
 };

@@ -3,6 +3,7 @@
 import { tableData } from "@/utils/table";
 import {
   Chip,
+  ListPagination,
   Pagination,
   Table,
   TableBody,
@@ -49,9 +50,10 @@ const TableFixedColumn = () => {
       />
 
       {/* Scrollable table wrapper */}
-      <div className="w-full overflow-x-auto border rounded-lg">
-        <div className="inline-block min-w-full align-middle">
-          <Table className="min-w-[1200px]">
+      <div className="border rounded-lg">
+        {/* <div className="inline-block min-w-full align-middle"> */}
+        <div className="max-w-[1280px] w-full overflow-auto">
+          <Table>
             <TableHead>
               <TableRow>
                 <TableHeadCell sticky left="0px" shadow className="bg-white">
@@ -91,7 +93,11 @@ const TableFixedColumn = () => {
                 <TableHeadCell>Visits Extra</TableHeadCell>
                 <TableHeadCell>Progress Extra</TableHeadCell>
                 <TableHeadCell>Status Extra</TableHeadCell>
-                <TableHeadCell>Visits Extra</TableHeadCell>
+                <TableHeadCell>Status Extra</TableHeadCell>
+                <TableHeadCell>Status Extra</TableHeadCell>
+                <TableHeadCell sticky right="0px" shadowRight>
+                  Visits Extra
+                </TableHeadCell>
                 {/* <TableHeadCell>Progress Extra</TableHeadCell> */}
                 {/* <TableHeadCell>Status Extra</TableHeadCell>
                 <TableHeadCell>Visits Extra</TableHeadCell> */}
@@ -132,7 +138,19 @@ const TableFixedColumn = () => {
                       {item.status}
                     </Chip>
                   </TableDataCell>
-                  <TableDataCell>{item.visits}</TableDataCell>
+                  <TableDataCell>
+                    <Chip intent="primary" size="sm">
+                      {item.status}
+                    </Chip>
+                  </TableDataCell>
+                  <TableDataCell>
+                    <Chip intent="primary" size="sm">
+                      {item.status}
+                    </Chip>
+                  </TableDataCell>
+                  <TableDataCell sticky right="0px" shadowRight>
+                    {item.visits}
+                  </TableDataCell>
                   {/* <TableDataCell>{item.progress}</TableDataCell> */}
                   {/* <TableDataCell>
                     <Chip intent="primary" size="sm">
@@ -145,15 +163,17 @@ const TableFixedColumn = () => {
             </TableBody>
           </Table>
         </div>
+
+        {/* </div> */}
       </div>
 
       {/* Optional bottom pagination (can uncomment if desired) */}
-      {/* <ListPagination
+      <ListPagination
         count={tableData?.length}
         page={page}
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
-      /> */}
+      />
     </div>
   );
 };

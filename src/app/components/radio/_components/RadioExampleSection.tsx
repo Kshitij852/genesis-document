@@ -46,6 +46,7 @@ const RadioExampleSection = () => {
                 setSelectedRadio((prev) => ({ ...prev, option1: "small" }))
               }
             />
+
             <Label className="font-semibold text-gray-700">Small</Label>
           </div>
 

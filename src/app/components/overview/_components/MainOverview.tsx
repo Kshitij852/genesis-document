@@ -128,7 +128,7 @@ const MainOverview = () => {
       description: "Visual indicators for task completion and loading states",
       href: "/components/progress",
       icon: <RiProgress3Line size={24} className="text-lime-600" />,
-      category: "Feedback",
+      category: "Loading States",
       status: "stable",
     },
     {
@@ -160,7 +160,7 @@ const MainOverview = () => {
       description: "Loading indicators and spinners for async operations",
       href: "/components/loading",
       icon: <RiLoaderLine size={24} className="text-blue-500" />,
-      category: "Feedback",
+      category: "Loading States",
       status: "stable",
     },
     {
@@ -216,7 +216,7 @@ const MainOverview = () => {
       description: "Loading placeholders for content while data loads",
       href: "/components/skeleton",
       icon: <RiGhostLine size={24} className="text-gray-400" />,
-      category: "Feedback",
+      category: "Loading States",
       status: "stable",
     },
     {
@@ -229,10 +229,10 @@ const MainOverview = () => {
     },
     {
       name: "Notice",
-      description: "Alert messages and notifications for user feedback",
+      description: "Alert messages and notifications for user loading states",
       href: "/components/notice",
       icon: <RiAlertLine size={24} className="text-yellow-600" />,
-      category: "Feedback",
+      category: "Loading States",
       status: "stable",
     },
     {
@@ -267,7 +267,7 @@ const MainOverview = () => {
     "Forms",
     "Data Display",
     "Navigation",
-    "Feedback",
+    "Loading States",
     "Overlay",
     "Layout",
     "Foundation",

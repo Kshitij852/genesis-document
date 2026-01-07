@@ -1,677 +1,612 @@
-import { TabsContainer, TabList, Tab, TabPanel } from "@atomos_tech/genesis";
-import { Dropdown, DropdownWithIcon } from "@atomos_tech/genesis";
-import { RiFilterLine, RiGlobalLine } from "@remixicon/react";
+"use client";
+
 import React, { useState } from "react";
+import {
+  Button,
+  Dropdown,
+  DropdownWithIcon,
+  Tab,
+  TabList,
+  TabPanel,
+  TabsContainer,
+  Typography,
+} from "@atomos_tech/genesis";
+import {
+  RiFilterLine,
+  RiGlobalLine,
+  RiSettings3Line,
+  RiUser3Line,
+  RiCalendarLine,
+  RiMapPinLine,
+  RiCheckLine,
+} from "@remixicon/react";
 
 import CodeSnippet from "../../button/_components/CodeSnippet";
 
+// Define types
 interface Option {
-  label: string;
-  value: string;
+  label: string | number;
+  value: string | number;
   info?: string;
+  addInfo?: string;
+  disabledOption?: boolean;
   tooltipContent?: string;
   labelTextColor?: string;
-  disabledOption?: boolean;
-  addInfo?: string;
 }
 
-const DropdownExamples = () => {
-  const [nestedTabs, setNestedTabs] = useState({
-    basic: "react",
-    advanced: "react",
-  });
-
-  const handleNestedTabChanges = (section: string, value: string) => {
-    setNestedTabs((prev) => ({ ...prev, [section]: value }));
-  };
-
-  const [multiSelect, setMultiSelect] = useState<Option[]>([]);
-  const [singleSelect, setSingleSelect] = useState<Option[]>([]);
-  const [dropdownMenuOption, setDropdownMenuOption] = useState<Option[]>([]);
-  const [dropdownMenuOptionTwo, setDropdownMenuOptionTwo] = useState<Option[]>(
-    []
-  );
-
-  const singleOptions = [
-    { label: "Option 1", value: "1" },
-    { label: "Option 2", value: "2" },
-    { label: "Option 3", value: "3" },
+const DropdownExampleSection = () => {
+  // Single select options (more realistic)
+  const singleOptions: Option[] = [
+    { label: "English", value: "en", info: "English language" },
+    { label: "Spanish", value: "es", info: "Español" },
+    { label: "French", value: "fr", info: "Français" },
+    { label: "German", value: "de", info: "Deutsch" },
+    { label: "Japanese", value: "ja", info: "日本語", disabledOption: true },
+    { label: "Chinese", value: "zh", info: "中文" },
   ];
 
-  const multiOptions = [
+  // Multi-select options (categories)
+  const multiOptions: Option[] = [
     {
-      label:
-        "appleeeeeeeeeeeeeeeeeeeeeeeeeeeeeee appleeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      value: "apple",
-      info: "Modals",
-      tooltipContent: "hjsghjwg",
-      labelTextColor: "oklch(49.6% 0.265 301.924)",
+      label: "Design",
+      value: "design",
+      info: "UI/UX Design",
+      labelTextColor: "#febec7",
+      // addInfo: "User interface and experience design",
+    },
+    {
+      label: "Development",
+      value: "development",
+      info: "Software Development",
+      labelTextColor: "#6d7f9b",
+      // addInfo: "Frontend and backend development",
+    },
+    {
+      label: "Marketing",
+      value: "marketing",
+      info: "Digital Marketing",
       disabledOption: true,
     },
     {
-      label: "banana",
-      value: "banana",
-      addInfo: "jdhjaldh",
-      labelTextColor: "#1765dc",
+      label: "Sales",
+      value: "sales",
+      info: "Business Development",
+      labelTextColor: "#583325",
+      tooltipContent: "Sales and business development activities",
     },
-    { label: "strawberry", value: "strawberry" },
-    { label: "kiwi", value: "kiwi", info: "info4" },
     {
-      label: "orangeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      value: "orange",
-      tooltipContent: "lower-level components:",
-      info: "info5",
+      label: "Customer Support",
+      value: "support",
+      info: "Customer Service",
+      labelTextColor: "#588379",
     },
-    { label: "grapes", value: "grapes" },
-    { label: "melon", value: "melon" },
-    { label: "mango", value: "mango" },
+    {
+      label: "Human Resources",
+      value: "hr",
+      info: "Human Resources",
+      labelTextColor: "#a80a20",
+      // addInfo: "Recruitment and employee management",
+    },
+    {
+      label: "Finance",
+      value: "finance",
+      info: "Financial Operations",
+      labelTextColor: "#2b1f4c",
+    },
+    {
+      label: "Operations",
+      value: "operations",
+      info: "Business Operations",
+      labelTextColor: "#d4af37",
+    },
   ];
 
+  // Status options
+  const statusOptions: Option[] = [
+    { label: "Active", value: "active", info: "Active users" },
+    { label: "Pending", value: "pending", info: "Pending approval" },
+    { label: "Suspended", value: "suspended", info: "Suspended accounts" },
+    {
+      label: "Inactive",
+      value: "inactive",
+      info: "Inactive users",
+      disabledOption: true,
+    },
+    { label: "Archived", value: "archived", info: "Archived records" },
+  ];
+
+  // Priority options
+  const priorityOptions: Option[] = [
+    { label: "Critical", value: "critical", info: "Highest priority" },
+    { label: "High", value: "high", info: "High priority" },
+    { label: "Medium", value: "medium", info: "Medium priority" },
+    { label: "Low", value: "low", info: "Low priority" },
+  ];
+
+  // State for dropdown selections
+  const [multiSelect, setMultiSelect] = useState<Option[]>([]);
+  const [singleSelect, setSingleSelect] = useState<Option[]>([]);
+  const [statusSelect, setStatusSelect] = useState<Option[]>([]);
+  const [prioritySelect, setPrioritySelect] = useState<Option[]>([]);
+  const [filterSelect, setFilterSelect] = useState<Option[]>([]);
+  const [activeTab, setActiveTab] = useState<"react" | "next">("react");
+  const handleTabChange = (value: string) => {
+    setActiveTab(value as "react" | "next");
+  };
+
+  // Reset handlers
   const handleReset = () => {
-    console.log("Reset clicked");
+    setMultiSelect([]);
+    setSingleSelect([]);
+    setStatusSelect([]);
+    setPrioritySelect([]);
+    setFilterSelect([]);
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
+      <Typography variant="h5" className="text-gray-800">
+        Dropdown Components
+      </Typography>
+
       {/* Basic Dropdown Examples */}
-      <section className="bg-white rounded-xl border border-gray-200 p-6">
-        <h2 className="text-lg font-semibold text-gray-800 mb-6">
-          Basic Dropdown Usage
-        </h2>
-
-        <div className="space-y-6 mb-6">
-          {/* Dropdown with Icon */}
-          <div className="bg-gray-50 rounded-lg p-4">
-            <div className="flex gap-6 items-center mb-4">
-              <h3 className="text-sm font-medium text-gray-700">
-                Dropdown with icon
-              </h3>
-              <Dropdown
-                options={multiOptions}
-                selected={dropdownMenuOption}
-                setSelected={setDropdownMenuOption}
-                search={true}
-                multiple={true}
-                width="200px"
-                id="dropdownMenuOptionOne"
-                dropdownFooter={true}
-                onApply={() => {
-                  alert("Apply button clicked");
-                }}
-              />
-              <DropdownWithIcon
-                options={multiOptions}
-                selected={dropdownMenuOptionTwo}
-                setSelected={setDropdownMenuOptionTwo}
-                search={true}
-                multiple={true}
-                width="200px"
-                id="dropdownMenuOptionTwo"
-                trigger={
-                  <RiFilterLine
-                    className="hover:bg-gray-200 rounded"
-                    cursor="pointer"
-                    size={14}
-                  />
-                }
-              />
-            </div>
-            <p className="text-xs text-gray-500">
-              Basic dropdown with search and multiple selection
-            </p>
-          </div>
-
-          {/* Multiple Dropdown Types */}
-          <div className="bg-gray-50 rounded-lg p-4">
-            <div className="flex items-start gap-10 flex-wrap">
-              <div>
-                <h3 className="text-sm font-medium text-gray-700 mb-2">
-                  With Custom Trigger
-                </h3>
-                <DropdownWithIcon
-                  options={multiOptions}
-                  selected={multiSelect}
-                  setSelected={setMultiSelect}
-                  search={true}
-                  multiple={true}
-                  dropdownText={`Selected ${multiSelect?.length} items`}
-                  width="200px"
-                  trigger={
-                    <RiFilterLine
-                      className="hover:bg-gray-200 rounded"
-                      cursor="pointer"
-                      size={14}
-                    />
-                  }
-                />
-              </div>
-
-              <div>
-                <h3 className="text-sm font-medium text-gray-700 mb-2">
-                  Text Trigger
-                </h3>
-                <DropdownWithIcon
-                  options={multiOptions}
-                  selected={multiSelect}
-                  setSelected={setMultiSelect}
-                  search={true}
-                  multiple={true}
-                  width="100px"
-                  trigger={<span>dropdown</span>}
-                  onReset={handleReset}
-                />
-              </div>
-
-              <div>
-                <h3 className="text-sm font-medium text-gray-700 mb-2">
-                  Multiple Selection
-                </h3>
-                <Dropdown
-                  options={[
-                    { label: "High", value: "High", disabledOption: true },
-                    { label: "Medium", value: "Medium" },
-                    { label: "Low", value: "Low" },
-                  ]}
-                  selected={multiSelect}
-                  setSelected={setMultiSelect}
-                  width="300px"
-                  icon={<RiGlobalLine size={16} />}
-                  dropdownText="Test Test"
-                  multiple
-                  search
-                  position="bottom"
-                  onApply={() => {
-                    alert("Apply button clicked");
-                  }}
-                  onReset={handleReset}
-                />
-              </div>
-
-              <div>
-                <h3 className="text-sm font-medium text-gray-700 mb-2">
-                  Single Selection
-                </h3>
-                <Dropdown
-                  options={multiOptions}
-                  selected={singleSelect}
-                  icon={<RiGlobalLine size={16} />}
-                  setSelected={setSingleSelect}
-                  dropdownText="single text"
-                  info="info"
-                  width="250px"
-                />
-              </div>
-
-              <div>
-                <h3 className="text-sm font-medium text-gray-700 mb-2">
-                  Disabled State
-                </h3>
-                <Dropdown
-                  options={singleOptions}
-                  selected={singleSelect}
-                  setSelected={setSingleSelect}
-                  multiple={false}
-                  info="info"
-                  disabled={true}
-                  width="200px"
-                />
-              </div>
-            </div>
-            <p className="text-xs text-gray-500 mt-4">
-              Various dropdown configurations including custom triggers,
-              multiple/single selection, and disabled states
-            </p>
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Single Select Dropdown */}
+        <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <Typography variant="h6" className="mb-4 text-gray-700">
+            Single Select
+          </Typography>
+          <div className="space-y-4">
+            <Dropdown
+              options={singleOptions}
+              selected={singleSelect}
+              setSelected={setSingleSelect}
+              dropdownText="Select language"
+              icon={<RiGlobalLine size={16} />}
+              // info="Choose your preferred language"
+              width="325px"
+            />
+            <Dropdown
+              options={statusOptions}
+              selected={statusSelect}
+              setSelected={setStatusSelect}
+              dropdownText="Filter by status"
+              icon={<RiUser3Line size={16} />}
+              width="325px"
+              multiple={false}
+            />
           </div>
         </div>
 
-        {/* Code Examples for Basic Usage */}
-        <TabsContainer value={nestedTabs.basic}>
+        {/* Multi-Select Dropdown */}
+        <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <Typography variant="h6" className="mb-4 text-gray-700">
+            Multi-Select
+          </Typography>
+          <div className="space-y-4">
+            <Dropdown
+              options={multiOptions}
+              selected={multiSelect}
+              setSelected={setMultiSelect}
+              dropdownText="Select categories"
+              icon={<RiSettings3Line size={16} />}
+              multiple={true}
+              search={true}
+              width="325px"
+              height="200px"
+            />
+            <Dropdown
+              options={priorityOptions}
+              selected={prioritySelect}
+              setSelected={setPrioritySelect}
+              dropdownText="Priority levels"
+              multiple={true}
+              width="325px"
+            />
+          </div>
+        </div>
+
+        {/* Dropdown with Footer */}
+        <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <Typography variant="h6" className="mb-4 text-gray-700">
+            With Footer Actions
+          </Typography>
+          <div className="space-y-4">
+            <Dropdown
+              options={multiOptions}
+              selected={multiSelect}
+              setSelected={setMultiSelect}
+              dropdownText="Apply filters"
+              multiple={true}
+              search={true}
+              width="325px"
+              height="200px"
+              dropdownFooter={true}
+              onApply={() => alert("Filters applied!")}
+              onReset={handleReset}
+            />
+            <Dropdown
+              options={statusOptions}
+              selected={statusSelect}
+              setSelected={setStatusSelect}
+              dropdownText="Custom footer"
+              multiple={true}
+              width="325px"
+              dropdownFooter={true}
+              footerAction={
+                <div className="flex gap-2">
+                  <Button
+                    className="px-2.5 py-1.5"
+                    variant="outlined"
+                    onClick={handleReset}
+                  >
+                    Clear
+                  </Button>
+                  <Button
+                    className="px-2 py-1"
+                    onClick={() => alert("Custom action")}
+                  >
+                    <RiCheckLine size={14} className="mr-1" />
+                    Confirm
+                  </Button>
+                </div>
+              }
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* DropdownWithIcon Examples */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <Typography variant="h6" className="mb-4 text-gray-700">
+            Icon Trigger Dropdowns
+          </Typography>
+          <div className="flex flex-wrap gap-4 items-center">
+            <div>
+              <Typography variant="b4" className="text-gray-600 mb-2">
+                Filter Icon
+              </Typography>
+              <DropdownWithIcon
+                options={multiOptions}
+                selected={filterSelect}
+                setSelected={setFilterSelect}
+                search={true}
+                multiple={true}
+                width="325px"
+                height="150px"
+                trigger={
+                  <RiFilterLine
+                    className="hover:bg-gray-100 rounded p-1 w-5 h-5"
+                    size={20}
+                  />
+                }
+                dropdownText={`Filters (${filterSelect.length})`}
+              />
+            </div>
+
+            <div>
+              <Typography variant="b4" className="text-gray-600 mb-2">
+                Calendar Icon
+              </Typography>
+              <DropdownWithIcon
+                options={singleOptions}
+                selected={singleSelect}
+                setSelected={setSingleSelect}
+                width="250px"
+                trigger={
+                  <RiCalendarLine
+                    className="hover:bg-gray-100 rounded p-1"
+                    size={20}
+                  />
+                }
+                dropdownText="Date range"
+              />
+            </div>
+
+            {/* <div>
+              <Typography variant="b4" className="text-gray-600 mb-2">
+                Location Icon
+              </Typography>
+              <DropdownWithIcon
+                options={statusOptions}
+                selected={statusSelect}
+                setSelected={setStatusSelect}
+                width="180px"
+                trigger={
+                  <RiMapPinLine
+                    className="hover:bg-gray-100 rounded p-1"
+                    size={20}
+                  />
+                }
+                dropdownText="Location"
+              />
+            </div> */}
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <Typography variant="h6" className="mb-4 text-gray-700">
+            Custom Trigger Dropdowns
+          </Typography>
+          <div className="space-y-4">
+            <div>
+              <Typography variant="b4" className="text-gray-600 mb-2">
+                Text Trigger
+              </Typography>
+              <DropdownWithIcon
+                options={priorityOptions}
+                selected={prioritySelect}
+                setSelected={setPrioritySelect}
+                search={true}
+                multiple={true}
+                width="325px"
+                trigger={
+                  <span className="ml-[-215px] px-2.5 py-1.5 bg-gray-100 rounded text-sm hover:bg-gray-200">
+                    Select Priority
+                  </span>
+                }
+              />
+            </div>
+
+            <div>
+              <Typography variant="b4" className="text-gray-600 mb-2">
+                Button Trigger
+              </Typography>
+              <DropdownWithIcon
+                options={multiOptions}
+                selected={multiSelect}
+                setSelected={setMultiSelect}
+                multiple={true}
+                width="325px"
+                trigger={
+                  <div className="px-2.5 py-1 text-sm flex gap-1 bg-primary-600 border border-primary-600 w-[120px] text-white rounded-lg">
+                    <RiSettings3Line size={14} className="mr-1 mt-0.5" />
+                    <p>Categories</p>
+                  </div>
+                }
+                position="left"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Special Cases */}
+      <section className="bg-white rounded-xl border border-gray-200 p-5">
+        <Typography variant="h6" className="mb-4 text-gray-700">
+          Special Cases
+        </Typography>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Disabled Dropdown */}
+          <div>
+            <Typography variant="b4" className="text-gray-600 mb-2">
+              Disabled Dropdown
+            </Typography>
+            <Dropdown
+              options={singleOptions}
+              selected={singleSelect}
+              setSelected={setSingleSelect}
+              dropdownText="Disabled dropdown"
+              icon={<RiGlobalLine size={16} />}
+              disabled={true}
+              width="250px"
+            />
+          </div>
+
+          {/* Dropdown with Position */}
+          <div>
+            <Typography variant="b4" className="text-gray-600 mb-2">
+              Right Position
+            </Typography>
+            <DropdownWithIcon
+              options={multiOptions}
+              selected={multiSelect}
+              setSelected={setMultiSelect}
+              search={true}
+              multiple={true}
+              width="325px"
+              position="top"
+              trigger={
+                <RiFilterLine
+                  className="hover:bg-gray-100 rounded p-1"
+                  size={20}
+                />
+              }
+            />
+          </div>
+
+          {/* Dropdown with Tooltip */}
+          <div>
+            <Typography variant="b4" className="text-gray-600 mb-2">
+              With Tooltip Info
+            </Typography>
+            <Dropdown
+              options={multiOptions}
+              selected={multiSelect}
+              setSelected={setMultiSelect}
+              dropdownText="Options with info"
+              multiple={true}
+              width="325px"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Code Examples */}
+      <section className="bg-white rounded-xl border border-gray-200 p-5">
+        <Typography variant="h6" className="mb-4 text-gray-700">
+          Code Examples
+        </Typography>
+        <TabsContainer value="react">
           <TabList
-            onChange={(val) => handleNestedTabChanges("basic", val)}
-            ariaLabel="React and Next tabs"
+            onChange={handleTabChange}
+            ariaLabel="Code examples"
             className="border-b border-gray-200 mb-4"
             box
           >
             <Tab
+              onChange={handleTabChange}
               label="React"
               value="react"
-              selectedTabValue={nestedTabs.basic}
-              onChange={(val) => handleNestedTabChanges("basic", val)}
+              selectedTabValue={activeTab}
             />
             <Tab
-              label="Next"
+              onChange={handleTabChange}
+              label="Next.js"
               value="next"
-              selectedTabValue={nestedTabs.basic}
-              onChange={(val) => handleNestedTabChanges("basic", val)}
+              selectedTabValue={activeTab}
             />
           </TabList>
 
-          <TabPanel value="react" currentValue={nestedTabs.basic}>
+          <TabPanel value="react" currentValue="react">
             <CodeSnippet
-              title="Complete Dropdown Examples"
-              code={`import { Dropdown, DropdownWithIcon } from "@atomos_tech/genesis";
+              title="Basic Dropdown Implementation"
+              code={`import { useState } from "react";
+import { Dropdown, DropdownWithIcon } from "@atomos_tech/genesis";
 import { RiFilterLine, RiGlobalLine } from "@remixicon/react";
-import { useState } from "react";
 
 const DropdownExamples = () => {
-  const [multiSelect, setMultiSelect] = useState([]);
   const [singleSelect, setSingleSelect] = useState([]);
-  const [dropdownMenuOption, setDropdownMenuOption] = useState([]);
-  const [dropdownMenuOptionTwo, setDropdownMenuOptionTwo] = useState([]);
+  const [multiSelect, setMultiSelect] = useState([]);
 
-  const singleOptions = [
-    { label: "Option 1", value: "1" },
-    { label: "Option 2", value: "2" },
-    { label: "Option 3", value: "3" },
+  const options = [
+    { label: "English", value: "en", info: "English language" },
+    { label: "Spanish", value: "es", info: "Español" },
+    { label: "French", value: "fr", info: "Français" },
+    { label: "German", value: "de", info: "Deutsch" },
+    { label: "Japanese", value: "ja", info: "日本語", disabledOption: true },
   ];
 
   const multiOptions = [
-    {
-      label: "appleeeeeeeeeeeeeeeeeeeeeeeeeeeeeee appleeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      value: "apple",
-      info: "Modals",
-      tooltipContent: "hjsghjwg",
-      labelTextColor: "oklch(49.6% 0.265 301.924)",
-      disabledOption: true,
-    },
-    {
-      label: "banana",
-      value: "banana",
-      addInfo: "jdhjaldh",
-      labelTextColor: "#1765dc",
-    },
-    { label: "strawberry", value: "strawberry" },
-    { label: "kiwi", value: "kiwi", info: "info4" },
-    {
-      label: "orangeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      value: "orange",
-      tooltipContent: "lower-level components:",
-      info: "info5",
-    },
-    { label: "grapes", value: "grapes" },
-    { label: "melon", value: "melon" },
-    { label: "mango", value: "mango" },
+    { label: "Design", value: "design", info: "UI/UX Design" },
+    { label: "Development", value: "development", info: "Software Development" },
+    { label: "Marketing", value: "marketing", info: "Digital Marketing" },
+    { label: "Sales", value: "sales", info: "Business Development" },
+    { label: "Support", value: "support", info: "Customer Service" },
   ];
 
-  const handleReset = () => {
-    console.log("Reset clicked");
-  };
-
   return (
-    <div>
-      {/* First Row: Basic Dropdowns with Icons */}
-      <section className="flex gap-6 items-center">
-        <h1 className="text-lg">Dropdown with icon</h1>
-        
-        {/* Basic Dropdown with Footer */}
-         <Dropdown
-          options={multiOptions}
-          selected={dropdownMenuOption}
-          setSelected={setDropdownMenuOption}
-          search={true}
-          multiple={true}
-          width="200px"
-          id="dropdownMenuOptionOne"
-          dropdownFooter={true}
-          onApply={() => {
-            alert("Apply button clicked");
-          }}
-        />
-        
-        {/* Dropdown with Custom Icon Trigger */}
-        <DropdownWithIcon
-          options={multiOptions}
-          selected={dropdownMenuOptionTwo}
-          setSelected={setDropdownMenuOptionTwo}
-          search={true}
-          multiple={true}
-          width="200px"
-          id="dropdownMenuOptionTwo"
-          trigger={
-            <RiFilterLine
-              className="hover:bg-gray-200 rounded"
-              cursor="pointer"
-              size={14}
-            />
-          }
-        />
-      </section>
+    <div className="space-y-4">
+      {/* Single Select Dropdown */}
+      <Dropdown
+        options={options}
+        selected={singleSelect}
+        setSelected={setSingleSelect}
+        dropdownText="Select language"
+        icon={<RiGlobalLine size={16} />}
+        info="Choose your preferred language"
+        width="250px"
+      />
 
-      {/* Second Row: Various Dropdown Configurations */}
-      <section className="flex items-start gap-10">
-        
-        {/* Dropdown with Custom Trigger and Dynamic Text */}
-        <div>
-          <h1 className="">Dropdown with icon</h1>
-          <DropdownWithIcon
-            options={multiOptions}
-            selected={multiSelect}
-            setSelected={setMultiSelect}
-            search={true}
-            multiple={true}
-            dropdownText={\`Selected \${multiSelect?.length} items\`}
-            width="200px"
-            trigger={
-              <RiFilterLine
-                className="hover:bg-gray-200 rounded"
-                cursor="pointer"
-                size={14}
-              />
-            }
-          />
-        </div>
+      {/* Multi-Select Dropdown */}
+      <Dropdown
+        options={multiOptions}
+        selected={multiSelect}
+        setSelected={setMultiSelect}
+        dropdownText="Select categories"
+        multiple={true}
+        search={true}
+        width="250px"
+        dropdownFooter={true}
+        onApply={() => console.log("Applied")}
+      />
 
-        {/* Dropdown with Text Trigger and Reset */}
-        <div>
-          <h1>Dropdown with icon</h1>
-          <DropdownWithIcon
-            options={multiOptions}
-            selected={multiSelect}
-            setSelected={setMultiSelect}
-            search={true}
-            multiple={true}
-            width="100px"
-            trigger={<span>dropdown</span>}
-            onReset={handleReset}
+      {/* Icon Trigger Dropdown */}
+      <DropdownWithIcon
+        options={multiOptions}
+        selected={multiSelect}
+        setSelected={setMultiSelect}
+        search={true}
+        multiple={true}
+        width="200px"
+        trigger={
+          <RiFilterLine
+            className="hover:bg-gray-100 rounded p-1"
+            size={20}
           />
-        </div>
-
-        {/* Multiple Selection Dropdown with Icon */}
-        <div>
-          <h1 className="text-lg">Multiple Dropdown</h1>
-          <Dropdown
-            options={[
-              { label: "High", value: "High", disabledOption: true },
-              { label: "Medium", value: "Medium" },
-              { label: "Low", value: "Low" },
-              { label: "High", value: "High" },
-              { label: "Medium", value: "Medium" },
-              { label: "Low", value: "Low" },
-              { label: "High", value: "High" },
-              { label: "Medium", value: "Medium" },
-              { label: "Low", value: "Low" },
-            ]}
-            selected={multiSelect}
-            setSelected={setMultiSelect}
-            width="300px"
-            icon={<RiGlobalLine size={16} />}
-            dropdownText="Test Test"
-            multiple
-            search
-            position="bottom"
-            onApply={() => {
-              alert("Apply button clicked");
-            }}
-            onReset={handleReset}
-          />
-        </div>
-
-        {/* Single Selection Dropdown */}
-        <div>
-          <h1 className="text-lg">Single Dropdown Language</h1>
-          <Dropdown
-            options={multiOptions}
-            selected={singleSelect}
-            icon={<RiGlobalLine size={16} />}
-            setSelected={setSingleSelect}
-            dropdownText="single text"
-            info="info"
-          />
-        </div>
-
-        {/* Disabled Dropdown */}
-        <div>
-          <h1 className="text-lg">Disabled Dropdown</h1>
-          <Dropdown
-            options={singleOptions}
-            selected={singleSelect}
-            setSelected={setSingleSelect}
-            multiple={false}
-            info="info"
-            disabled={true}
-          />
-        </div>
-
-        {/* Right Positioned Dropdown */}
-        <div className="ml-10">
-          <DropdownWithIcon
-            options={multiOptions}
-            selected={multiSelect}
-            setSelected={setMultiSelect}
-            search={true}
-            multiple={true}
-            width="100px"
-            position="right"
-            trigger={
-              <RiFilterLine
-                className="hover:bg-gray-200 rounded"
-                cursor="pointer"
-                size={14}
-              />
-            }
-          />
-        </div>
-      </section>
+        }
+        dropdownText="Filters"
+      />
     </div>
   );
-};
-
-export default DropdownExamples;`}
+};`}
             />
           </TabPanel>
 
-          <TabPanel value="next" currentValue={nestedTabs.basic}>
+          <TabPanel value="next" currentValue="react">
             <CodeSnippet
-              title="Complete Dropdown Examples"
+              title="Basic Dropdown Implementation"
               code={`"use client";
+import { useState } from "react";
 import { Dropdown, DropdownWithIcon } from "@atomos_tech/genesis";
 import { RiFilterLine, RiGlobalLine } from "@remixicon/react";
-import { useState } from "react";
 
 const DropdownExamples = () => {
-  const [multiSelect, setMultiSelect] = useState([]);
   const [singleSelect, setSingleSelect] = useState([]);
-  const [dropdownMenuOption, setDropdownMenuOption] = useState([]);
-  const [dropdownMenuOptionTwo, setDropdownMenuOptionTwo] = useState([]);
+  const [multiSelect, setMultiSelect] = useState([]);
 
-  const singleOptions = [
-    { label: "Option 1", value: "1" },
-    { label: "Option 2", value: "2" },
-    { label: "Option 3", value: "3" },
+  const options = [
+    { label: "English", value: "en", info: "English language" },
+    { label: "Spanish", value: "es", info: "Español" },
+    { label: "French", value: "fr", info: "Français" },
+    { label: "German", value: "de", info: "Deutsch" },
+    { label: "Japanese", value: "ja", info: "日本語", disabledOption: true },
   ];
 
   const multiOptions = [
-    {
-      label: "appleeeeeeeeeeeeeeeeeeeeeeeeeeeeeee appleeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      value: "apple",
-      info: "Modals",
-      tooltipContent: "hjsghjwg",
-      labelTextColor: "oklch(49.6% 0.265 301.924)",
-      disabledOption: true,
-    },
-    {
-      label: "banana",
-      value: "banana",
-      addInfo: "jdhjaldh",
-      labelTextColor: "#1765dc",
-    },
-    { label: "strawberry", value: "strawberry" },
-    { label: "kiwi", value: "kiwi", info: "info4" },
-    {
-      label: "orangeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      value: "orange",
-      tooltipContent: "lower-level components:",
-      info: "info5",
-    },
-    { label: "grapes", value: "grapes" },
-    { label: "melon", value: "melon" },
-    { label: "mango", value: "mango" },
+    { label: "Design", value: "design", info: "UI/UX Design" },
+    { label: "Development", value: "development", info: "Software Development" },
+    { label: "Marketing", value: "marketing", info: "Digital Marketing" },
+    { label: "Sales", value: "sales", info: "Business Development" },
+    { label: "Support", value: "support", info: "Customer Service" },
   ];
 
-  const handleReset = () => {
-    console.log("Reset clicked");
-  };
-
   return (
-    <div>
-      {/* First Row: Basic Dropdowns with Icons */}
-      <section className="flex gap-6 items-center">
-        <h1 className="text-lg">Dropdown with icon</h1>
-        
-        {/* Basic Dropdown with Footer */}
-         <Dropdown
-          options={multiOptions}
-          selected={dropdownMenuOption}
-          setSelected={setDropdownMenuOption}
-          search={true}
-          multiple={true}
-          width="200px"
-          id="dropdownMenuOptionOne"
-          dropdownFooter={true}
-          onApply={() => {
-            alert("Apply button clicked");
-          }}
-        />
-        
-        {/* Dropdown with Custom Icon Trigger */}
-        <DropdownWithIcon
-          options={multiOptions}
-          selected={dropdownMenuOptionTwo}
-          setSelected={setDropdownMenuOptionTwo}
-          search={true}
-          multiple={true}
-          width="200px"
-          id="dropdownMenuOptionTwo"
-          trigger={
-            <RiFilterLine
-              className="hover:bg-gray-200 rounded"
-              cursor="pointer"
-              size={14}
-            />
-          }
-        />
-      </section>
+    <div className="space-y-4">
+      {/* Single Select Dropdown */}
+      <Dropdown
+        options={options}
+        selected={singleSelect}
+        setSelected={setSingleSelect}
+        dropdownText="Select language"
+        icon={<RiGlobalLine size={16} />}
+        info="Choose your preferred language"
+        width="250px"
+      />
 
-      {/* Second Row: Various Dropdown Configurations */}
-      <section className="flex items-start gap-10">
-        
-        {/* Dropdown with Custom Trigger and Dynamic Text */}
-        <div>
-          <h1 className="">Dropdown with icon</h1>
-          <DropdownWithIcon
-            options={multiOptions}
-            selected={multiSelect}
-            setSelected={setMultiSelect}
-            search={true}
-            multiple={true}
-            dropdownText={\`Selected \${multiSelect?.length} items\`}
-            width="200px"
-            trigger={
-              <RiFilterLine
-                className="hover:bg-gray-200 rounded"
-                cursor="pointer"
-                size={14}
-              />
-            }
-          />
-        </div>
+      {/* Multi-Select Dropdown */}
+      <Dropdown
+        options={multiOptions}
+        selected={multiSelect}
+        setSelected={setMultiSelect}
+        dropdownText="Select categories"
+        multiple={true}
+        search={true}
+        width="250px"
+        dropdownFooter={true}
+        onApply={() => console.log("Applied")}
+      />
 
-        {/* Dropdown with Text Trigger and Reset */}
-        <div>
-          <h1>Dropdown with icon</h1>
-          <DropdownWithIcon
-            options={multiOptions}
-            selected={multiSelect}
-            setSelected={setMultiSelect}
-            search={true}
-            multiple={true}
-            width="100px"
-            trigger={<span>dropdown</span>}
-            onReset={handleReset}
+      {/* Icon Trigger Dropdown */}
+      <DropdownWithIcon
+        options={multiOptions}
+        selected={multiSelect}
+        setSelected={setMultiSelect}
+        search={true}
+        multiple={true}
+        width="200px"
+        trigger={
+          <RiFilterLine
+            className="hover:bg-gray-100 rounded p-1"
+            size={20}
           />
-        </div>
-
-        {/* Multiple Selection Dropdown with Icon */}
-        <div>
-          <h1 className="text-lg">Multiple Dropdown</h1>
-          <Dropdown
-            options={[
-              { label: "High", value: "High", disabledOption: true },
-              { label: "Medium", value: "Medium" },
-              { label: "Low", value: "Low" },
-              { label: "High", value: "High" },
-              { label: "Medium", value: "Medium" },
-              { label: "Low", value: "Low" },
-              { label: "High", value: "High" },
-              { label: "Medium", value: "Medium" },
-              { label: "Low", value: "Low" },
-            ]}
-            selected={multiSelect}
-            setSelected={setMultiSelect}
-            width="300px"
-            icon={<RiGlobalLine size={16} />}
-            dropdownText="Test Test"
-            multiple
-            search
-            position="bottom"
-            onApply={() => {
-              alert("Apply button clicked");
-            }}
-            onReset={handleReset}
-          />
-        </div>
-
-        {/* Single Selection Dropdown */}
-        <div>
-          <h1 className="text-lg">Single Dropdown Language</h1>
-          <Dropdown
-            options={multiOptions}
-            selected={singleSelect}
-            icon={<RiGlobalLine size={16} />}
-            setSelected={setSingleSelect}
-            dropdownText="single text"
-            info="info"
-          />
-        </div>
-
-        {/* Disabled Dropdown */}
-        <div>
-          <h1 className="text-lg">Disabled Dropdown</h1>
-          <Dropdown
-            options={singleOptions}
-            selected={singleSelect}
-            setSelected={setSingleSelect}
-            multiple={false}
-            info="info"
-            disabled={true}
-          />
-        </div>
-
-        {/* Right Positioned Dropdown */}
-        <div className="ml-10">
-          <DropdownWithIcon
-            options={multiOptions}
-            selected={multiSelect}
-            setSelected={setMultiSelect}
-            search={true}
-            multiple={true}
-            width="100px"
-            position="right"
-            trigger={
-              <RiFilterLine
-                className="hover:bg-gray-200 rounded"
-                cursor="pointer"
-                size={14}
-              />
-            }
-          />
-        </div>
-      </section>
+        }
+        dropdownText="Filters"
+      />
     </div>
   );
-};
-
-export default DropdownExamples;`}
+};`}
             />
           </TabPanel>
         </TabsContainer>
@@ -680,4 +615,4 @@ export default DropdownExamples;`}
   );
 };
 
-export default DropdownExamples;
+export default DropdownExampleSection;

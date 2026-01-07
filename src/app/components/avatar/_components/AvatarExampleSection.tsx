@@ -24,7 +24,7 @@ const AvatarExampleSection = () => {
     setValue(newValue);
   };
   const ImageSrc =
-    "https://dsc-omeka.library.ucsc.edu/files/large/c3e28bccf8a4c2a7b7a793f32dd71dcba6b476d8.jpg";
+    "https://m.media-amazon.com/images/I/712tQUrusKL._AC_UF894,1000_QL80_.jpg";
   const ImageSrc3 =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQctq1xt7gJIlOAG90VKtVQ-LGIPx6jNWuWAg&s";
   const ImageSrc4 =
@@ -32,7 +32,8 @@ const AvatarExampleSection = () => {
   const ImageSrc5 =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj1juoQ3LY61pRYsvApuy9dT6dK4aAZEhh1w&s";
 
-  const ImageSrc2 = "https://pbs.twimg.com/media/F8eHwgAacAAaSw4.jpg";
+  const ImageSrc2 =
+    "https://i.pinimg.com/736x/e9/f6/36/e9f63675fa85770c13c3d726f3313a37.jpg";
 
   return (
     <div>

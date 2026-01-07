@@ -362,6 +362,58 @@ const TabsPropsTable = () => {
               The currently active tab value to determine visibility
             </TableDataCell>
           </TableRow>
+
+          <TableRow>
+            <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
+              <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
+                Position
+              </code>
+            </TableDataCell>
+            <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
+              <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
+                "horizontal" | "vertical"
+              </code>
+            </TableDataCell>
+            <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
+              <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
+                string
+              </code>
+            </TableDataCell>
+            <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
+              <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
+                "horizontal"
+              </code>
+            </TableDataCell>
+            <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
+              Determines the orientation of the tab list
+            </TableDataCell>
+          </TableRow>
+
+          <TableRow>
+            <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
+              <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
+                Pill
+              </code>
+            </TableDataCell>
+            <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
+              <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
+                true | false
+              </code>
+            </TableDataCell>
+            <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
+              <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
+                boolean
+              </code>
+            </TableDataCell>
+            <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
+              <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
+                false
+              </code>
+            </TableDataCell>
+            <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
+              Determines the shape of the tab
+            </TableDataCell>
+          </TableRow>
         </TableBody>
       </Table>
     </div>

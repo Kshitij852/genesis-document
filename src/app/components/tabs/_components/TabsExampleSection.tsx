@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-
 import CodeSnippet from "../../button/_components/CodeSnippet";
 import { RiSearch2Line, RiUserLine, RiSettingsLine } from "@remixicon/react";
 import { Tab, TabList, TabPanel, TabsContainer } from "@atomos_tech/genesis";
@@ -10,9 +9,12 @@ const TabsExampleSection = () => {
   const [nestedTabs, setNestedTabs] = useState({
     variants: "react",
     customization: "react",
+    additional: "react",
   });
 
   const [exampleTabs, setExampleTabs] = useState("1");
+  const [pillTabs, setPillTabs] = useState("1");
+  const [verticalTabs, setVerticalTabs] = useState("1");
 
   const handleNestedTabChanges = (section: string, value: string) => {
     setNestedTabs((prev) => ({ ...prev, [section]: value }));
@@ -20,6 +22,14 @@ const TabsExampleSection = () => {
 
   const handleExampleTabChange = (newValue: string) => {
     setExampleTabs(newValue);
+  };
+
+  const handlePillTabChange = (newValue: string) => {
+    setPillTabs(newValue);
+  };
+
+  const handleVerticalTabChange = (newValue: string) => {
+    setVerticalTabs(newValue);
   };
 
   return (
@@ -125,6 +135,58 @@ const TabsExampleSection = () => {
               </div>
             </TabPanel>
             <TabPanel value="3" currentValue={exampleTabs}>
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <p className="text-sm text-gray-600">Item Three Content</p>
+              </div>
+            </TabPanel>
+          </TabsContainer>
+        </div>
+
+        {/* Pill Variant Tabs Example */}
+        <div className="mb-6">
+          <h3 className="text-sm font-medium text-gray-700 mb-3">
+            Pill Variant
+          </h3>
+          <TabsContainer value={pillTabs}>
+            <TabList
+              onChange={handlePillTabChange}
+              ariaLabel="Pill tabs example"
+              pill={true}
+            >
+              <Tab
+                label="Item One"
+                value="1"
+                content="(12)"
+                icon={<RiSearch2Line size={16} />}
+                onChange={handlePillTabChange}
+                selectedTabValue={pillTabs}
+              />
+              <Tab
+                label="Item Two"
+                value="2"
+                onChange={handlePillTabChange}
+                selectedTabValue={pillTabs}
+              />
+              <Tab
+                label="Item Three"
+                value="3"
+                onChange={handlePillTabChange}
+                selectedTabValue={pillTabs}
+              />
+            </TabList>
+            <TabPanel value="1" currentValue={pillTabs}>
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <p className="text-sm text-gray-600">
+                  Item One Content - Pill style with rounded corners
+                </p>
+              </div>
+            </TabPanel>
+            <TabPanel value="2" currentValue={pillTabs}>
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <p className="text-sm text-gray-600">Item Two Content</p>
+              </div>
+            </TabPanel>
+            <TabPanel value="3" currentValue={pillTabs}>
               <div className="p-4 bg-gray-50 rounded-lg">
                 <p className="text-sm text-gray-600">Item Three Content</p>
               </div>
@@ -246,6 +308,45 @@ const TabExample = () => {
         Item Three Content
       </TabPanel>
     </TabsContainer>
+
+    {/* Pill Variant */}
+    <TabsContainer value={value}>
+      <TabList
+        onChange={handleTabChange}
+        ariaLabel="Pill tabs example"
+        pill={true}
+      >
+        <Tab
+          label="Item One"
+          value="1"
+          content="(12)"
+          icon={<RiSearch2Line size={16} />}
+          onChange={handleTabChange}
+          selectedTabValue={value}
+        />
+        <Tab
+          label="Item Two"
+          value="2"
+          onChange={handleTabChange}
+          selectedTabValue={value}
+        />
+        <Tab
+          label="Item Three"
+          value="3"
+          onChange={handleTabChange}
+          selectedTabValue={value}
+        />
+      </TabList>
+      <TabPanel value="1" currentValue={value}>
+        Item One Content
+      </TabPanel>
+      <TabPanel value="2" currentValue={value}>
+        Item Two Content
+      </TabPanel>
+      <TabPanel value="3" currentValue={value}>
+        Item Three Content
+      </TabPanel>
+    </TabsContainer>
   );
 };`}
             />
@@ -312,6 +413,45 @@ const TabExample = () => {
         onChange={handleTabChange}
         ariaLabel="Box tabs example"
         box={true}
+      >
+        <Tab
+          label="Item One"
+          value="1"
+          content="(12)"
+          icon={<RiSearch2Line size={16} />}
+          onChange={handleTabChange}
+          selectedTabValue={value}
+        />
+        <Tab
+          label="Item Two"
+          value="2"
+          onChange={handleTabChange}
+          selectedTabValue={value}
+        />
+        <Tab
+          label="Item Three"
+          value="3"
+          onChange={handleTabChange}
+          selectedTabValue={value}
+        />
+      </TabList>
+      <TabPanel value="1" currentValue={value}>
+        Item One Content
+      </TabPanel>
+      <TabPanel value="2" currentValue={value}>
+        Item Two Content
+      </TabPanel>
+      <TabPanel value="3" currentValue={value}>
+        Item Three Content
+      </TabPanel>
+    </TabsContainer>
+
+    {/* Pill Variant */}
+    <TabsContainer value={value}>
+      <TabList
+        onChange={handleTabChange}
+        ariaLabel="Pill tabs example"
+        pill={true}
       >
         <Tab
           label="Item One"
@@ -473,6 +613,66 @@ const TabExample = () => {
           </TabsContainer>
         </div>
 
+        {/* Vertical Tabs Example */}
+        <div className="mb-6">
+          <h3 className="text-sm font-medium text-gray-700 mb-3">
+            Vertical Tabs
+          </h3>
+          <TabsContainer
+            value={verticalTabs}
+            position="vertical"
+            className="flex gap-4"
+          >
+            <TabList
+              onChange={handleVerticalTabChange}
+              ariaLabel="Vertical tabs example"
+              position="vertical"
+              className="w-48"
+            >
+              <Tab
+                label="Item One"
+                value="1"
+                onChange={handleVerticalTabChange}
+                selectedTabValue={verticalTabs}
+                position="vertical"
+              />
+              <Tab
+                label="Item Two"
+                value="2"
+                onChange={handleVerticalTabChange}
+                selectedTabValue={verticalTabs}
+                position="vertical"
+              />
+              <Tab
+                label="Item Three"
+                value="3"
+                onChange={handleVerticalTabChange}
+                selectedTabValue={verticalTabs}
+                position="vertical"
+              />
+            </TabList>
+            <div className="flex-1">
+              <TabPanel value="1" currentValue={verticalTabs}>
+                <div className="p-4 bg-gray-50 rounded-lg">
+                  <p className="text-sm text-gray-600">
+                    Item One Content - Vertical tabs layout
+                  </p>
+                </div>
+              </TabPanel>
+              <TabPanel value="2" currentValue={verticalTabs}>
+                <div className="p-4 bg-gray-50 rounded-lg">
+                  <p className="text-sm text-gray-600">Item Two Content</p>
+                </div>
+              </TabPanel>
+              <TabPanel value="3" currentValue={verticalTabs}>
+                <div className="p-4 bg-gray-50 rounded-lg">
+                  <p className="text-sm text-gray-600">Item Three Content</p>
+                </div>
+              </TabPanel>
+            </div>
+          </TabsContainer>
+        </div>
+
         <TabsContainer value={nestedTabs.customization}>
           <TabList
             onChange={(val) => handleNestedTabChanges("customization", val)}
@@ -526,21 +726,21 @@ const TabExample = () => {
       className="hover:bg-warning-100 hover:text-warning-800"
     />
   </TabList>
-  <TabPanel value="1" currentValue={exampleTabs}>
+  <TabPanel value="1" currentValue={value}>
     <div className="p-4 bg-gray-50 rounded-lg">
-    <p className="text-sm text-gray-600">
+      <p className="text-sm text-gray-600">
         Custom styled tab with primary colors and rounded corners
-    </p>
+      </p>
     </div>
   </TabPanel>
-  <TabPanel value="2" currentValue={exampleTabs}>
+  <TabPanel value="2" currentValue={value}>
     <div className="p-4 bg-gray-50 rounded-lg">
-    <p className="text-sm text-gray-600">Item Two Content</p>
+      <p className="text-sm text-gray-600">Item Two Content</p>
     </div>
   </TabPanel>
-  <TabPanel value="3" currentValue={exampleTabs}>
+  <TabPanel value="3" currentValue={value}>
     <div className="p-4 bg-gray-50 rounded-lg">
-    <p className="text-sm text-gray-600">Item Three Content</p>
+      <p className="text-sm text-gray-600">Item Three Content</p>
     </div>
   </TabPanel>
 </TabsContainer>
@@ -576,27 +776,82 @@ const TabExample = () => {
       selectedTabValue={value}
     />
   </TabList>
- <TabPanel value="1" currentValue={exampleTabs}>
+  <TabPanel value="1" currentValue={value}>
     <div className="p-4 bg-gray-50 rounded-lg">
-    <p className="text-sm text-gray-600">
+      <p className="text-sm text-gray-600">
         Profile tab with user icon and badge count
-    </p>
+      </p>
     </div>
   </TabPanel>
-  <TabPanel value="2" currentValue={exampleTabs}>
+  <TabPanel value="2" currentValue={value}>
     <div className="p-4 bg-gray-50 rounded-lg">
-    <p className="text-sm text-gray-600">
+      <p className="text-sm text-gray-600">
         Search tab with result count
-    </p>
+      </p>
     </div>
   </TabPanel>
-  <TabPanel value="3" currentValue={exampleTabs}>
+  <TabPanel value="3" currentValue={value}>
     <div className="p-4 bg-gray-50 rounded-lg">
-    <p className="text-sm text-gray-600">
+      <p className="text-sm text-gray-600">
         Settings tab with gear icon
-    </p>
+      </p>
     </div>
   </TabPanel>
+</TabsContainer>
+
+{/* Vertical Tabs */}
+<TabsContainer
+  value={value}
+  position="vertical"
+  className="flex gap-4"
+>
+  <TabList
+    onChange={handleTabChange}
+    ariaLabel="Vertical tabs example"
+    position="vertical"
+    className="w-48"
+  >
+    <Tab
+      label="Item One"
+      value="1"
+      onChange={handleTabChange}
+      selectedTabValue={value}
+      position="vertical"
+    />
+    <Tab
+      label="Item Two"
+      value="2"
+      onChange={handleTabChange}
+      selectedTabValue={value}
+      position="vertical"
+    />
+    <Tab
+      label="Item Three"
+      value="3"
+      onChange={handleTabChange}
+      selectedTabValue={value}
+      position="vertical"
+    />
+  </TabList>
+  <div className="flex-1">
+    <TabPanel value="1" currentValue={value}>
+      <div className="p-4 bg-gray-50 rounded-lg">
+        <p className="text-sm text-gray-600">
+          Item One Content - Vertical tabs layout
+        </p>
+      </div>
+    </TabPanel>
+    <TabPanel value="2" currentValue={value}>
+      <div className="p-4 bg-gray-50 rounded-lg">
+        <p className="text-sm text-gray-600">Item Two Content</p>
+      </div>
+    </TabPanel>
+    <TabPanel value="3" currentValue={value}>
+      <div className="p-4 bg-gray-50 rounded-lg">
+        <p className="text-sm text-gray-600">Item Three Content</p>
+      </div>
+    </TabPanel>
+  </div>
 </TabsContainer>`}
             />
           </TabPanel>
@@ -633,21 +888,21 @@ const TabExample = () => {
       className="hover:bg-warning-100 hover:text-warning-800"
     />
   </TabList>
-  <TabPanel value="1" currentValue={exampleTabs}>
+  <TabPanel value="1" currentValue={value}>
     <div className="p-4 bg-gray-50 rounded-lg">
-    <p className="text-sm text-gray-600">
+      <p className="text-sm text-gray-600">
         Custom styled tab with primary colors and rounded corners
-    </p>
+      </p>
     </div>
   </TabPanel>
-  <TabPanel value="2" currentValue={exampleTabs}>
+  <TabPanel value="2" currentValue={value}>
     <div className="p-4 bg-gray-50 rounded-lg">
-    <p className="text-sm text-gray-600">Item Two Content</p>
+      <p className="text-sm text-gray-600">Item Two Content</p>
     </div>
   </TabPanel>
-  <TabPanel value="3" currentValue={exampleTabs}>
+  <TabPanel value="3" currentValue={value}>
     <div className="p-4 bg-gray-50 rounded-lg">
-    <p className="text-sm text-gray-600">Item Three Content</p>
+      <p className="text-sm text-gray-600">Item Three Content</p>
     </div>
   </TabPanel>
 </TabsContainer>
@@ -683,27 +938,82 @@ const TabExample = () => {
       selectedTabValue={value}
     />
   </TabList>
- <TabPanel value="1" currentValue={exampleTabs}>
+  <TabPanel value="1" currentValue={value}>
     <div className="p-4 bg-gray-50 rounded-lg">
-    <p className="text-sm text-gray-600">
+      <p className="text-sm text-gray-600">
         Profile tab with user icon and badge count
-    </p>
+      </p>
     </div>
   </TabPanel>
-  <TabPanel value="2" currentValue={exampleTabs}>
+  <TabPanel value="2" currentValue={value}>
     <div className="p-4 bg-gray-50 rounded-lg">
-    <p className="text-sm text-gray-600">
+      <p className="text-sm text-gray-600">
         Search tab with result count
-    </p>
+      </p>
     </div>
   </TabPanel>
-  <TabPanel value="3" currentValue={exampleTabs}>
+  <TabPanel value="3" currentValue={value}>
     <div className="p-4 bg-gray-50 rounded-lg">
-    <p className="text-sm text-gray-600">
+      <p className="text-sm text-gray-600">
         Settings tab with gear icon
-    </p>
+      </p>
     </div>
   </TabPanel>
+</TabsContainer>
+
+{/* Vertical Tabs */}
+<TabsContainer
+  value={value}
+  position="vertical"
+  className="flex gap-4"
+>
+  <TabList
+    onChange={handleTabChange}
+    ariaLabel="Vertical tabs example"
+    position="vertical"
+    className="w-48"
+  >
+    <Tab
+      label="Item One"
+      value="1"
+      onChange={handleTabChange}
+      selectedTabValue={value}
+      position="vertical"
+    />
+    <Tab
+      label="Item Two"
+      value="2"
+      onChange={handleTabChange}
+      selectedTabValue={value}
+      position="vertical"
+    />
+    <Tab
+      label="Item Three"
+      value="3"
+      onChange={handleTabChange}
+      selectedTabValue={value}
+      position="vertical"
+    />
+  </TabList>
+  <div className="flex-1">
+    <TabPanel value="1" currentValue={value}>
+      <div className="p-4 bg-gray-50 rounded-lg">
+        <p className="text-sm text-gray-600">
+          Item One Content - Vertical tabs layout
+        </p>
+      </div>
+    </TabPanel>
+    <TabPanel value="2" currentValue={value}>
+      <div className="p-4 bg-gray-50 rounded-lg">
+        <p className="text-sm text-gray-600">Item Two Content</p>
+      </div>
+    </TabPanel>
+    <TabPanel value="3" currentValue={value}>
+      <div className="p-4 bg-gray-50 rounded-lg">
+        <p className="text-sm text-gray-600">Item Three Content</p>
+      </div>
+    </TabPanel>
+  </div>
 </TabsContainer>`}
             />
           </TabPanel>

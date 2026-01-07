@@ -3,6 +3,8 @@ import React from "react";
 import {
   RiAlertLine,
   RiArrowDownSLine,
+  RiCalendarTodoLine,
+  RiCellphoneLine,
   RiCheckboxLine,
   RiCircleFill,
   RiDashboardLine,
@@ -11,13 +13,14 @@ import {
   RiFileUploadLine,
   RiFilterLine,
   RiFontSize2,
-  RiGhostLine,
   RiGlobalLine,
+  RiIdCardLine,
   RiInformationLine,
   RiInputCursorMove,
   RiInputMethodLine,
   RiLayoutHorizontalLine,
   RiListOrdered,
+  RiLoader4Line,
   RiLoaderLine,
   RiLogoutBoxRLine,
   RiMenu5Line,
@@ -26,9 +29,12 @@ import {
   RiProgress3Line,
   RiRadioButtonLine,
   RiRouteLine,
+  RiSidebarFoldLine,
   RiSideBarLine,
+  RiSkullLine,
   RiTableLine,
   RiToggleLine,
+  RiTreeLine,
   RiUser3Line,
   RiWindowLine,
 } from "@remixicon/react";
@@ -73,6 +79,11 @@ const MainSidebar = ({ collapsed, setCollapsed }: MainSidebarProps) => {
           label: "Button",
           href: "/components/button",
           icon: <RiMouseLine size={18} />,
+        },
+        {
+          label: "Date Picker",
+          href: "/components/date-picker",
+          icon: <RiCalendarTodoLine size={18} />,
         },
       ],
     },
@@ -172,7 +183,7 @@ const MainSidebar = ({ collapsed, setCollapsed }: MainSidebarProps) => {
       ],
     },
     {
-      label: "Feedback",
+      label: "Loading States",
       items: [
         {
           label: "Progress",
@@ -182,17 +193,27 @@ const MainSidebar = ({ collapsed, setCollapsed }: MainSidebarProps) => {
         {
           label: "Loading",
           href: "/components/loading",
-          icon: <RiLoaderLine size={18} />,
+          icon: <RiLoader4Line size={18} />,
         },
         {
           label: "Skeleton",
           href: "/components/skeleton",
-          icon: <RiGhostLine size={18} />,
+          icon: <RiSkullLine size={18} />,
         },
         {
           label: "Notice",
           href: "/components/notice",
           icon: <RiAlertLine size={18} />,
+        },
+        {
+          label: "Callout",
+          href: "/components/callout",
+          icon: <RiCellphoneLine size={18} />,
+        },
+        {
+          label: "Spinner",
+          href: "/components/spinner",
+          icon: <RiLoaderLine size={18} />,
         },
       ],
     },
@@ -230,6 +251,21 @@ const MainSidebar = ({ collapsed, setCollapsed }: MainSidebarProps) => {
           href: "/components/divider",
           icon: <RiDivideLine size={18} />,
         },
+        {
+          label: "Drawer",
+          href: "/components/drawer",
+          icon: <RiSidebarFoldLine size={18} />,
+        },
+        {
+          label: "Card",
+          href: "/components/card",
+          icon: <RiIdCardLine size={18} />,
+        },
+        {
+          label: "Tree View",
+          href: "/components/tree-view",
+          icon: <RiTreeLine size={18} />,
+        },
       ],
     },
   ];
@@ -254,7 +290,10 @@ const MainSidebar = ({ collapsed, setCollapsed }: MainSidebarProps) => {
       <div className="relative flex gap-3 bg-white z-50">
         <section className=" bg-white">
           <Sidebar collapsed={collapsed} setCollapsed={setCollapsed}>
-            <Sidebar.Header collapsed={collapsed} setCollapsed={setCollapsed}>
+            <Sidebar.Header
+            //  collapsed={collapsed}
+            //  setCollapsed={setCollapsed}
+            >
               <span
                 className="flex items-center justify-center cursor-pointer p-2"
                 onClick={() => setCollapsed((prev) => !prev)}
@@ -272,7 +311,7 @@ const MainSidebar = ({ collapsed, setCollapsed }: MainSidebarProps) => {
             <Sidebar.Menu
               scroll
               collapsed={collapsed}
-              setCollapsed={setCollapsed}
+              // setCollapsed={setCollapsed}
               navItems={navItems}
             />
 

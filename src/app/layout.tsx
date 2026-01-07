@@ -1,3 +1,4 @@
+import "@atomos_tech/genesis-datepicker/style";
 import "@atomos_tech/genesis/style";
 import "./globals.css";
 

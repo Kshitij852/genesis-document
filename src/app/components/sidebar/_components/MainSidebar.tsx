@@ -17,7 +17,7 @@ import {
   RiLightbulbFlashLine,
   RiPriceTag3Line,
 } from "@remixicon/react";
-import React, { useState } from "react";
+import React from "react";
 import FeatureCard from "../../../../components/common/FeatureCard";
 import SidebarExampleSection from "./SidebarExampleSection";
 

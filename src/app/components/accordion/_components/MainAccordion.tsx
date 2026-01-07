@@ -1,13 +1,6 @@
 "use client";
 import React from "react";
-import {
-  Table,
-  TableBody,
-  TableDataCell,
-  TableHead,
-  TableHeadCell,
-  TableRow,
-} from "@atomos_tech/genesis";
+
 import {
   RiArrowDownSLine,
   RiCodeLine,
@@ -16,6 +9,7 @@ import {
 import FeatureCard from "../../../../components/common/FeatureCard";
 import AccordionExampleSection from "./AccordionExampleSection";
 import { RiLightbulbFlashLine } from "@remixicon/react";
+import AccordionPropTable from "./AccordionPropTable";
 
 const MainAccordion = () => {
   return (
@@ -61,188 +55,7 @@ const MainAccordion = () => {
       <AccordionExampleSection />
 
       {/* Props Section */}
-      <section className="space-y-6">
-        <h2 className="text-2xl font-semibold text-gray-800">Props</h2>
-
-        <div className="overflow-auto shadow-sm rounded-xl">
-          <Table>
-            <TableHead>
-              <TableRow className="text-left">
-                <TableHeadCell>Component</TableHeadCell>
-                <TableHeadCell>Prop</TableHeadCell>
-                <TableHeadCell>Type</TableHeadCell>
-                <TableHeadCell>Default</TableHeadCell>
-                <TableHeadCell>Description</TableHeadCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    Accordion
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    type
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
-                  <code className="bg-purple-50 text-purple-700 px-2 py-1 text-nowrap rounded-md text-xs font-mono">
-                    {`"single" | "multiple"`}
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
-                  <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    single
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Determines whether one or multiple items can be opened at once
-                </TableDataCell>
-              </TableRow>
-
-              <TableRow>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    Accordion
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    collapsible
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
-                  <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                    boolean
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
-                  <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    false
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  {`  When type is "single", allows closing all items when
-                  collapsible is true`}
-                </TableDataCell>
-              </TableRow>
-
-              <TableRow>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    AccordionTrigger
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    defaultOpen
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
-                  <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                    boolean
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
-                  <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    false
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Whether the accordion item should be open by default
-                </TableDataCell>
-              </TableRow>
-
-              <TableRow>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    AccordionTrigger
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    triggerIcon
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
-                  <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                    ReactNode
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
-                  <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    ChevronDown
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Custom icon to display as the trigger indicator
-                </TableDataCell>
-              </TableRow>
-
-              {/* AccordionTrigger - className */}
-              <TableRow>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    AccordionTrigger
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    className
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
-                  <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                    string
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
-                  <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    -
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  You can apply a custom <code>className</code> to style the
-                  trigger using your own Tailwind or CSS classes. <br />
-                  Example:{" "}
-                  <code className="bg-gray-100 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    {`                    className="text-blue-600 hover:text-blue-800"
-`}{" "}
-                  </code>
-                </TableDataCell>
-              </TableRow>
-
-              <TableRow>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    AccordionItem
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    value
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
-                  <code className="bg-purple-50 text-purple-700 px-2 py-1 rounded-md text-xs font-mono">
-                    string
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm">
-                  <code className="bg-gray-100 text-gray-700 px-2 py-1 rounded-md text-xs font-mono">
-                    -
-                  </code>
-                </TableDataCell>
-                <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Unique value for the accordion item used for state management
-                </TableDataCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </div>
-      </section>
+      <AccordionPropTable />
     </div>
   );
 };

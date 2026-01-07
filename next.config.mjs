@@ -23,6 +23,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "m.media-amazon.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "encrypted-tbn0.gstatic.com",
         port: "",
         pathname: "/**",
@@ -56,6 +61,12 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "placehold.co", // Placeholder images
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "i.pinimg.com",
         port: "",
         pathname: "/**",
       },

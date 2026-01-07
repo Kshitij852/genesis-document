@@ -10,6 +10,7 @@ import {
   TabList,
   TabPanel,
   TabsContainer,
+  Typography,
 } from "@atomos_tech/genesis";
 import React, { useState } from "react";
 
@@ -17,155 +18,44 @@ import CodeSnippet from "../../button/_components/CodeSnippet";
 
 const TypographyExampleSection = () => {
   const [nestedTabs, setNestedTabs] = useState({
-    fontSizes: "react",
-    fontWeights: "react",
-    headings: "react",
+    headlines: "react",
     bodyText: "react",
+    intents: "react",
+    scale: "react",
   });
 
   const handleNestedTabChanges = (section: string, value: string) => {
     setNestedTabs((prev) => ({ ...prev, [section]: value }));
   };
+
   return (
-    <div>
-      {" "}
-      <section className="space-y-5 py-5">
-        <div>
-          <h2 className="text-2xl font-semibold text-gray-800">Font Sizes</h2>
-          <p className="text-gray-600">
-            A complete typographic scale with display and text sizes for every
-            use case.
-          </p>
-        </div>
-
-        <div className="bg-white rounded-xl border border-gray-200 p-6 space-y-4">
-          {/* Live preview */}
-          <div>
-            <h3 className="text-lg font-medium text-gray-700">Display Sizes</h3>
-            <div className="space-y-2">
-              <h1 className="text-display-2xl font-bold text-gray-900">
-                Display 2xl
-              </h1>
-              <h2 className="text-display-xl font-bold text-gray-900">
-                Display xl
-              </h2>
-              <h3 className="text-display-lg font-bold text-gray-900">
-                Display lg
-              </h3>
-              <h4 className="text-display-md font-bold text-gray-900">
-                Display md
-              </h4>
-              <h5 className="text-display-sm font-bold text-gray-900">
-                Display sm
-              </h5>
-              <h6 className="text-display-xs font-bold text-gray-900">
-                Display xs
-              </h6>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-medium text-gray-700 mb-4">
-              Text Sizes
-            </h3>
-            <div className="space-y-3">
-              <p className="text-xl text-gray-700">Text xl</p>
-              <p className="text-lg text-gray-700">Text lg</p>
-              <p className="text-base text-gray-700">Text md</p>
-              <p className="text-sm text-gray-700">Text sm</p>
-              <p className="text-xs text-gray-700">Text xs</p>
-            </div>
-          </div>
-
-          {/* Tabs only for the code snippet */}
-          <TabsContainer value={nestedTabs.fontSizes}>
-            <TabList
-              onChange={(val) => handleNestedTabChanges("fontSizes", val)}
-              ariaLabel="React and Next tabs"
-              className="border-b border-gray-200 mb-4"
-              box
-            >
-              <Tab
-                label="React"
-                value="react"
-                selectedTabValue={nestedTabs.fontSizes}
-                onChange={(val) => handleNestedTabChanges("fontSizes", val)}
-              />
-              <Tab
-                label="Next"
-                value="next"
-                selectedTabValue={nestedTabs.fontSizes}
-                onChange={(val) => handleNestedTabChanges("fontSizes", val)}
-              />
-            </TabList>
-
-            <TabPanel value="react" currentValue={nestedTabs.fontSizes}>
-              <CodeSnippet
-                title="Typography - Font Size"
-                code={`<h1 className="text-display-2xl font-bold text-gray-900">Display 2xl</h1>
-<h1 className="text-display-xl font-bold text-gray-900">Display xl</h1>
-<h1 className="text-display-lg font-bold text-gray-900">Display lg</h1>
-<h1 className="text-display-md font-bold text-gray-900">Display md</h1>
-<h1 className="text-display-sm font-bold text-gray-900">Display sm</h1>
-<h1 className="text-display-xs font-bold text-gray-900">Display xs</h1>
-<p className="text-xl text-gray-700">Text xl</p>
-<p className="text-lg text-gray-700">Text lg</p>
-<p className="text-base text-gray-700">Text md</p>
-<p className="text-sm text-gray-700">Text sm</p>
-<p className="text-xs text-gray-700">Text xs</p>`}
-              />
-            </TabPanel>
-
-            <TabPanel value="next" currentValue={nestedTabs.fontSizes}>
-              <CodeSnippet
-                title="Typography - Font Size"
-                code={`<h1 className="text-display-2xl font-bold text-gray-900">Display 2xl</h1>
-<h1 className="text-display-xl font-bold text-gray-900">Display xl</h1>
-<h1 className="text-display-lg font-bold text-gray-900">Display lg</h1>
-<h1 className="text-display-md font-bold text-gray-900">Display md</h1>
-<h1 className="text-display-sm font-bold text-gray-900">Display sm</h1>
-<h1 className="text-display-xs font-bold text-gray-900">Display xs</h1>
-<p className="text-xl text-gray-700">Text xl</p>
-<p className="text-lg text-gray-700">Text lg</p>
-<p className="text-base text-gray-700">Text md</p>
-<p className="text-sm text-gray-700">Text sm</p>
-<p className="text-xs text-gray-700">Text xs</p>`}
-              />
-            </TabPanel>
-          </TabsContainer>
-        </div>
-      </section>
-      {/* Font Weights Section */}
+    <div className="space-y-8">
+      {/* Headlines Section */}
       <section className="space-y-5">
         <div>
-          <h2 className="text-2xl font-semibold text-gray-800">Font Weights</h2>
-          <p className="text-gray-600">
-            Four distinct font weights to create visual hierarchy and emphasis.
-          </p>
+          <Typography variant="h5" className="text-gray-800 mt-3">
+            Headlines
+          </Typography>
+          <Typography variant="b3" className="text-gray-600">
+            Six headline variants for creating clear visual hierarchy.
+          </Typography>
         </div>
 
-        {/* Single card containing both preview and tabs */}
         <div className="bg-white rounded-xl border border-gray-200 p-6">
-          {/* Live preview section */}
+          {/* Live preview */}
           <div className="space-y-4 mb-6">
-            <p className="text-xl font-normal text-gray-700">
-              Regular - Font Weight 400
-            </p>
-            <p className="text-xl font-medium text-gray-700">
-              Medium - Font Weight 500
-            </p>
-            <p className="text-xl font-semibold text-gray-700">
-              Semi Bold - Font Weight 600
-            </p>
-            <p className="text-xl font-bold text-gray-700">
-              Bold - Font Weight 700
-            </p>
+            <Typography variant="h1">H1 Headline</Typography>
+            <Typography variant="h2">H2 Headline</Typography>
+            <Typography variant="h3">H3 Headline</Typography>
+            <Typography variant="h4">H4 Headline</Typography>
+            <Typography variant="h5">H5 Headline</Typography>
+            <Typography variant="h6">H6 Headline</Typography>
           </div>
 
-          {/* Tabs for code snippet - inside the same card */}
-          <TabsContainer value={nestedTabs.fontWeights}>
+          {/* Code Tabs */}
+          <TabsContainer value={nestedTabs.headlines}>
             <TabList
-              onChange={(val) => handleNestedTabChanges("fontWeights", val)}
+              onChange={(val) => handleNestedTabChanges("headlines", val)}
               ariaLabel="React and Next tabs"
               className="border-b border-gray-200 mb-4"
               box
@@ -173,332 +63,434 @@ const TypographyExampleSection = () => {
               <Tab
                 label="React"
                 value="react"
-                selectedTabValue={nestedTabs.fontWeights}
-                onChange={(val) => handleNestedTabChanges("fontWeights", val)}
+                selectedTabValue={nestedTabs.headlines}
+                onChange={(val) => handleNestedTabChanges("headlines", val)}
               />
               <Tab
                 label="Next"
                 value="next"
-                selectedTabValue={nestedTabs.fontWeights}
-                onChange={(val) => handleNestedTabChanges("fontWeights", val)}
+                selectedTabValue={nestedTabs.headlines}
+                onChange={(val) => handleNestedTabChanges("headlines", val)}
               />
             </TabList>
 
-            <TabPanel value="react" currentValue={nestedTabs.fontWeights}>
+            <TabPanel value="react" currentValue={nestedTabs.headlines}>
               <CodeSnippet
-                title="Typography - Font Weight"
-                code={`<h1 className="text-xl font-normal text-gray-700">Regular</h1>
-<h1 className="text-xl font-medium text-gray-700">Medium</h1>
-<h1 className="text-xl font-semibold text-gray-700">Semi Bold</h1>
-<h1 className="text-xl font-bold text-gray-700">Bold</h1>`}
+                title="Headlines"
+                code={`import { Typography } from "@atomos_tech/genesis";
+
+<Typography variant="h1">H1 Headline</Typography>
+<Typography variant="h2">H2 Headline</Typography>
+<Typography variant="h3">H3 Headline</Typography>
+<Typography variant="h4">H4 Headline</Typography>
+<Typography variant="h5">H5 Headline</Typography>
+<Typography variant="h6">H6 Headline</Typography>`}
               />
             </TabPanel>
 
-            <TabPanel value="next" currentValue={nestedTabs.fontWeights}>
+            <TabPanel value="next" currentValue={nestedTabs.headlines}>
               <CodeSnippet
-                title="Typography - Font Weight"
-                code={`<h1 className="text-xl font-normal text-gray-700">Regular</h1>
-<h1 className="text-xl font-medium text-gray-700">Medium</h1>
-<h1 className="text-xl font-semibold text-gray-700">Semi Bold</h1>
-<h1 className="text-xl font-bold text-gray-700">Bold</h1>`}
+                title="Headlines"
+                code={`"use client";
+import { Typography } from "@atomos_tech/genesis";
+
+<Typography variant="h1">H1 Headline</Typography>
+<Typography variant="h2">H2 Headline</Typography>
+<Typography variant="h3">H3 Headline</Typography>
+<Typography variant="h4">H4 Headline</Typography>
+<Typography variant="h5">H5 Headline</Typography>
+<Typography variant="h6">H6 Headline</Typography>`}
               />
             </TabPanel>
           </TabsContainer>
         </div>
       </section>
-      {/* Usage Examples Section */}
+
+      {/* Body Text Section */}
       <section className="space-y-5">
-        <h2 className="text-2xl font-semibold text-gray-800 pt-4">
-          Usage Examples
-        </h2>
+        <div>
+          <Typography variant="h5" className="text-gray-800">
+            Body Text
+          </Typography>
+          <Typography variant="b3" className="text-gray-600">
+            Five body text variants with different sizes for various content
+            needs.
+          </Typography>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-4 items-start">
-          {/* Headings Example */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <h3 className="text-lg font-medium text-gray-800 mb-4">Headings</h3>
-            <div className="space-y-3 mb-6">
-              <h1 className="text-3xl font-bold text-gray-900">Page Title</h1>
-              <h2 className="text-2xl font-semibold text-gray-800">
-                Section Heading
-              </h2>
-              <h3 className="text-xl font-medium text-gray-700">Subsection</h3>
-              <h4 className="text-lg font-normal text-gray-600">Card Title</h4>
-            </div>
-
-            {/* Nested Tabs for Headings */}
-            <TabsContainer value={nestedTabs.headings}>
-              <TabList
-                onChange={(val) => handleNestedTabChanges("headings", val)}
-                ariaLabel="React and Next tabs for headings"
-                className="border-b border-gray-200 mb-4"
-                box
-              >
-                <Tab
-                  label="React"
-                  value="react"
-                  selectedTabValue={nestedTabs.headings}
-                  onChange={(val) => handleNestedTabChanges("headings", val)}
-                />
-                <Tab
-                  label="Next"
-                  value="next"
-                  selectedTabValue={nestedTabs.headings}
-                  onChange={(val) => handleNestedTabChanges("headings", val)}
-                />
-              </TabList>
-
-              <TabPanel value="react" currentValue={nestedTabs.headings}>
-                <CodeSnippet
-                  title="Headings Example"
-                  code={`<h1 className="text-3xl font-bold text-gray-900">Page Title</h1>
-<h2 className="text-2xl font-semibold text-gray-800">Section Heading</h2>
-<h3 className="text-xl font-medium text-gray-700">Subsection</h3>
-<h4 className="text-lg font-normal text-gray-600">Card Title</h4>`}
-                />
-              </TabPanel>
-
-              <TabPanel value="next" currentValue={nestedTabs.headings}>
-                <CodeSnippet
-                  title="Headings Example"
-                  code={`<h1 className="text-3xl font-bold text-gray-900">Page Title</h1>
-<h2 className="text-2xl font-semibold text-gray-800">Section Heading</h2>
-<h3 className="text-xl font-medium text-gray-700">Subsection</h3>
-<h4 className="text-lg font-normal text-gray-600">Card Title</h4>`}
-                />
-              </TabPanel>
-            </TabsContainer>
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
+          {/* Live preview */}
+          <div className="space-y-4 mb-6">
+            <Typography variant="b1">
+              Body 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </Typography>
+            <Typography variant="b2">
+              Body 2 - Ut enim ad minim veniam, quis nostrud exercitation
+              ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </Typography>
+            <Typography variant="b3">
+              Body 3 - Duis aute irure dolor in reprehenderit in voluptate velit
+              esse cillum dolore eu fugiat nulla pariatur.
+            </Typography>
+            <Typography variant="b4">
+              Body 4 - Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est laborum.
+            </Typography>
+            <Typography variant="b5">
+              Body 5 - Sed ut perspiciatis unde omnis iste natus error sit
+              voluptatem accusantium doloremque laudantium.
+            </Typography>
           </div>
 
-          {/* Body Text Example */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <h3 className="text-lg font-medium text-gray-800 mb-4">
-              Body Text
-            </h3>
-            <div className="space-y-3 mb-6">
-              <p className="text-md text-gray-700 font-medium">
-                This is regular body text with comfortable line height for
-                optimal readability.
-              </p>
-              <p className="text-sm text-gray-600">
-                This is smaller supporting text for captions, labels, and
-                secondary information.
-              </p>
-              <p className="text-xs text-gray-500">
-                This is the smallest text size, perfect for metadata and fine
-                print.
-              </p>
-            </div>
-
-            {/* Nested Tabs for Body Text */}
-            <TabsContainer value={nestedTabs.bodyText}>
-              <TabList
+          {/* Code Tabs */}
+          <TabsContainer value={nestedTabs.bodyText}>
+            <TabList
+              onChange={(val) => handleNestedTabChanges("bodyText", val)}
+              ariaLabel="React and Next tabs"
+              className="border-b border-gray-200 mb-4"
+              box
+            >
+              <Tab
+                label="React"
+                value="react"
+                selectedTabValue={nestedTabs.bodyText}
                 onChange={(val) => handleNestedTabChanges("bodyText", val)}
-                ariaLabel="React and Next tabs for body text"
-                className="border-b border-gray-200 mb-4"
-                box
-              >
-                <Tab
-                  label="React"
-                  value="react"
-                  selectedTabValue={nestedTabs.bodyText}
-                  onChange={(val) => handleNestedTabChanges("bodyText", val)}
-                />
-                <Tab
-                  label="Next"
-                  value="next"
-                  selectedTabValue={nestedTabs.bodyText}
-                  onChange={(val) => handleNestedTabChanges("bodyText", val)}
-                />
-              </TabList>
+              />
+              <Tab
+                label="Next"
+                value="next"
+                selectedTabValue={nestedTabs.bodyText}
+                onChange={(val) => handleNestedTabChanges("bodyText", val)}
+              />
+            </TabList>
 
-              <TabPanel value="react" currentValue={nestedTabs.bodyText}>
-                <CodeSnippet
-                  title="Body Text Example"
-                  code={`<p className="text-md font-medium">This is regular body text with comfortable line height.</p>
-<p className="text-sm">This is smaller supporting text for captions, labels, and secondary info.</p>
-<p className="text-xs text-gray-500">This is the smallest text size, perfect for metadata and fine print.</p>`}
-                />
-              </TabPanel>
+            <TabPanel value="react" currentValue={nestedTabs.bodyText}>
+              <CodeSnippet
+                title="Body Text"
+                code={`import { Typography } from "@atomos_tech/genesis";
 
-              <TabPanel value="next" currentValue={nestedTabs.bodyText}>
-                <CodeSnippet
-                  title="Body Text Example"
-                  code={`<p className="text-md font-medium">This is regular body text with comfortable line height.</p>
-<p className="text-sm">This is smaller supporting text for captions, labels, and secondary info.</p>
-<p className="text-xs text-gray-500">This is the smallest text size, perfect for metadata and fine print.</p>`}
-                />
-              </TabPanel>
-            </TabsContainer>
-          </div>
+<Typography variant="b1">
+  Body 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</Typography>
+<Typography variant="b2">
+  Body 2 - Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+</Typography>
+<Typography variant="b3">
+  Body 3 - Duis aute irure dolor in reprehenderit in voluptate velit.
+</Typography>
+<Typography variant="b4">
+  Body 4 - Excepteur sint occaecat cupidatat non proident.
+</Typography>
+<Typography variant="b5">
+  Body 5 - Sed ut perspiciatis unde omnis iste natus error.
+</Typography>`}
+              />
+            </TabPanel>
+
+            <TabPanel value="next" currentValue={nestedTabs.bodyText}>
+              <CodeSnippet
+                title="Body Text"
+                code={`"use client";
+import { Typography } from "@atomos_tech/genesis";
+
+<Typography variant="b1">
+  Body 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</Typography>
+<Typography variant="b2">
+  Body 2 - Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+</Typography>
+<Typography variant="b3">
+  Body 3 - Duis aute irure dolor in reprehenderit in voluptate velit.
+</Typography>
+<Typography variant="b4">
+  Body 4 - Excepteur sint occaecat cupidatat non proident.
+</Typography>
+<Typography variant="b5">
+  Body 5 - Sed ut perspiciatis unde omnis iste natus error.
+</Typography>`}
+              />
+            </TabPanel>
+          </TabsContainer>
         </div>
       </section>
+
+      {/* Intents Section */}
+      <section className="space-y-5">
+        <div>
+          <Typography variant="h5" className="text-gray-800">
+            Intents
+          </Typography>
+          <Typography variant="b3" className="text-gray-600">
+            Body text variants with different color intents for semantic
+            meaning.
+          </Typography>
+        </div>
+
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
+          {/* Live preview */}
+          <div className="space-y-3 mb-6">
+            <Typography variant="b1" intent="primary">
+              Body 1 - Primary
+            </Typography>
+            <Typography variant="b2" intent="success">
+              Body 2 - Success
+            </Typography>
+            <Typography variant="b3" intent="error">
+              Body 3 - Error
+            </Typography>
+            <Typography variant="b4" intent="warning">
+              Body 4 - Warning
+            </Typography>
+            <Typography variant="b5" intent="default">
+              Body 5 - Default
+            </Typography>
+          </div>
+
+          {/* Code Tabs */}
+          <TabsContainer value={nestedTabs.intents}>
+            <TabList
+              onChange={(val) => handleNestedTabChanges("intents", val)}
+              ariaLabel="React and Next tabs"
+              className="border-b border-gray-200 mb-4"
+              box
+            >
+              <Tab
+                label="React"
+                value="react"
+                selectedTabValue={nestedTabs.intents}
+                onChange={(val) => handleNestedTabChanges("intents", val)}
+              />
+              <Tab
+                label="Next"
+                value="next"
+                selectedTabValue={nestedTabs.intents}
+                onChange={(val) => handleNestedTabChanges("intents", val)}
+              />
+            </TabList>
+
+            <TabPanel value="react" currentValue={nestedTabs.intents}>
+              <CodeSnippet
+                title="Typography Intents"
+                code={`import { Typography } from "@atomos_tech/genesis";
+
+<Typography variant="b1" intent="primary">
+  Body 1 - Primary
+</Typography>
+<Typography variant="b2" intent="success">
+  Body 2 - Success
+</Typography>
+<Typography variant="b3" intent="error">
+  Body 3 - Error
+</Typography>
+<Typography variant="b4" intent="warning">
+  Body 4 - Warning
+</Typography>
+<Typography variant="b5" intent="default">
+  Body 5 - Default
+</Typography>`}
+              />
+            </TabPanel>
+
+            <TabPanel value="next" currentValue={nestedTabs.intents}>
+              <CodeSnippet
+                title="Typography Intents"
+                code={`"use client";
+import { Typography } from "@atomos_tech/genesis";
+
+<Typography variant="b1" intent="primary">
+  Body 1 - Primary
+</Typography>
+<Typography variant="b2" intent="success">
+  Body 2 - Success
+</Typography>
+<Typography variant="b3" intent="error">
+  Body 3 - Error
+</Typography>
+<Typography variant="b4" intent="warning">
+  Body 4 - Warning
+</Typography>
+<Typography variant="b5" intent="default">
+  Body 5 - Default
+</Typography>`}
+              />
+            </TabPanel>
+          </TabsContainer>
+        </div>
+      </section>
+
       {/* Scale Reference Table */}
       <section className="space-y-5">
-        <h2 className="text-2xl font-semibold text-gray-800 pt-4">
-          Scale Reference
-        </h2>
+        <div>
+          <Typography variant="h5" className="text-gray-800">
+            Scale Reference
+          </Typography>
+          <Typography variant="b3" className="text-gray-600">
+            Complete reference for all typography variants and their use cases.
+          </Typography>
+        </div>
 
         <div className="overflow-auto shadow-sm rounded-xl">
           <Table>
             <TableHead>
               <TableRow className="text-left">
-                <TableHeadCell>Size</TableHeadCell>
-                <TableHeadCell>Class</TableHeadCell>
+                <TableHeadCell>Variant</TableHeadCell>
+                <TableHeadCell>Class / Component</TableHeadCell>
                 <TableHeadCell>Use Case</TableHeadCell>
               </TableRow>
             </TableHead>
             <TableBody>
               <TableRow>
                 <TableDataCell className="py-4 px-6 font-medium text-gray-900 pt-8 text-sm">
-                  <span className="text-display-2xl font-bold">Aa</span>
+                  <Typography variant="h1">H1</Typography>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    text-display-2xl
+                    variant="h1"
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Hero sections, billboard headlines
+                  Main page titles, hero sections
                 </TableDataCell>
               </TableRow>
 
               <TableRow>
                 <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm pt-6">
-                  <span className="text-display-xl font-bold">Aa</span>
+                  <Typography variant="h2">H2</Typography>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    text-display-xl
+                    variant="h2"
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Landing hero titles, major headings
+                  Major section headings
                 </TableDataCell>
               </TableRow>
 
               <TableRow>
                 <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm pt-6">
-                  <span className="text-display-lg font-bold">Aa</span>
+                  <Typography variant="h3">H3</Typography>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    text-display-lg
+                    variant="h3"
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Page titles, primary section headers
+                  Subsection headings
                 </TableDataCell>
               </TableRow>
 
               <TableRow>
                 <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm pt-6">
-                  <span className="text-display-md font-bold">Aa</span>
+                  <Typography variant="h4">H4</Typography>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    text-display-md
+                    variant="h4"
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Section headings, feature titles
+                  Card titles, smaller headings
                 </TableDataCell>
               </TableRow>
 
               <TableRow>
                 <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm pt-4">
-                  <span className="text-display-sm font-bold">Aa</span>
+                  <Typography variant="h5">H5</Typography>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    text-display-sm
+                    variant="h5"
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Subheadings, card titles
+                  Widget titles, small headings
                 </TableDataCell>
               </TableRow>
 
               <TableRow>
                 <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <span className="text-display-xs font-bold">Aa</span>
+                  <Typography variant="h6">H6</Typography>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    text-display-xs
+                    variant="h6"
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Smaller subheads, emphasized labels
+                  Smallest headings, labels
                 </TableDataCell>
               </TableRow>
 
               <TableRow>
                 <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <span className="text-text-xl font-bold">Aa</span>
+                  <Typography variant="b1">Body 1</Typography>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    text-xl
+                    variant="b1"
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Lead paragraphs, intro copy
+                  Large body text, lead paragraphs
                 </TableDataCell>
               </TableRow>
 
               <TableRow>
                 <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <span className="text-text-lg font-bold">Aa</span>
+                  <Typography variant="b2">Body 2</Typography>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    text-lg
+                    variant="b2"
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Large body text, important content
+                  Standard body text, paragraphs
                 </TableDataCell>
               </TableRow>
 
               <TableRow>
                 <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <span className="text-text-md font-bold">Aa</span>
+                  <Typography variant="b3">Body 3</Typography>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    text-md
+                    variant="b3"
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Base body text, paragraphs, UI copy
+                  Smaller body text, captions
                 </TableDataCell>
               </TableRow>
 
               <TableRow>
                 <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <span className="text-text-sm font-bold">Aa</span>
+                  <Typography variant="b4">Body 4</Typography>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    text-sm
+                    variant="b4"
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Small text, captions, form labels
+                  Small text, form labels, notes
                 </TableDataCell>
               </TableRow>
 
               <TableRow>
                 <TableDataCell className="py-4 px-6 font-medium text-gray-900 text-sm">
-                  <span className="text-text-xs font-bold">Aa</span>
+                  <Typography variant="b5">Body 5</Typography>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-700 text-sm">
                   <code className="bg-blue-50 text-blue-700 px-2 py-1 rounded-md text-xs font-mono">
-                    text-xs
+                    variant="b5"
                   </code>
                 </TableDataCell>
                 <TableDataCell className="py-4 px-6 text-gray-600 text-sm leading-relaxed">
-                  Fine print, metadata, legal notes
+                  Extra small text, metadata, legal
                 </TableDataCell>
               </TableRow>
             </TableBody>
