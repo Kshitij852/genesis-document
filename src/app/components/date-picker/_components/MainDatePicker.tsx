@@ -10,6 +10,9 @@ import React, { useState } from "react";
 import FeatureCard from "../../../../components/common/FeatureCard";
 import { Tab, TabList, TabPanel, TabsContainer } from "@atomos_tech/genesis";
 import DatePickerReact from "./DatePickerReact";
+import DatePickerNext from "./DatePickerNext";
+import DatePickerReactPropsTable from "./DatePickerReactPropsTable";
+import DatePickerNextPropsTable from "./DatePickerNextPropTable";
 
 const MainDatePicker = () => {
   const [value, setValue] = useState("1");
@@ -79,9 +82,11 @@ const MainDatePicker = () => {
         </TabList>
         <TabPanel value="1" currentValue={value}>
           <DatePickerReact />
+<DatePickerReactPropsTable/>
         </TabPanel>
         <TabPanel value="2" currentValue={value}>
-          Next
+          <DatePickerNext/>
+<DatePickerNextPropsTable/>
         </TabPanel>
       </TabsContainer>
     </div>

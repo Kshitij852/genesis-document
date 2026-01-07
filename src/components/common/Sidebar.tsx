@@ -60,6 +60,10 @@ const MainSidebar = ({ collapsed, setCollapsed }: MainSidebarProps) => {
           href: "/components/overview",
           icon: <RiDashboardLine size={18} />,
         },
+         {
+          label: "Testing",
+          href: "/components/testing",
+        },
       ],
     },
     {
